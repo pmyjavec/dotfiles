@@ -8,7 +8,6 @@ set nocompatible
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-#Inserts newline when g is pressed and not in insert moed
 map g i<CR><Esc>h
 
 Bundle 'gmarik/vundle'
