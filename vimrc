@@ -1,23 +1,32 @@
-" Install extras first
 set nocompatible               " be iMproved
-filetype off                   " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-Bundle 'sukima/xmledit'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'vividchalk'
-
-call vundle#rc()
-
-" Set basic options
 set list
 set t_Co=256
 set ts=2
 set expandtab
 syntax on
-filetype plugin indent on
-colorscheme vividchalk
+filetype off                   " required!
 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-vividchalk.git'
+Bundle 'sukima/xmledit'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'vim-ruby/vim-ruby'
+" vim-scripts repos
+" non github repos
+" ...
+
+filetype plugin indent on 
+colorscheme vividchalk
