@@ -22,11 +22,13 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-vividchalk.git'
 Bundle 'sukima/xmledit'
-Bundle 'scrooloose/nerdcommenter'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-ruby/vim-ruby'
 " vim-scripts repos
 " non github repos
 " ...
 
-filetype plugin indent on 
+filetype plugin indent off
+filetype on
+syntax on
 colorscheme vividchalk
