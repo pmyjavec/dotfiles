@@ -1,7 +1,7 @@
 export LS_OPTIONS='--color=auto'
 export CLICOLOR='Yes'
 export LSCOLORS=''
-export PS1="\[\033[1;32m\][\u@\h:\[\033[0m\]\[\033[1;34m\]\w\[\033[0m\]\[\033[1;34m\]]$ \[\033[0m\]"
+export PS1="\[$(tput bold)\]\[$(tput setaf 7)\][\u@\h\[$(tput setaf 7)\]:\[$(tput setaf 6)\]\w\[$(tput setaf 7)\]]$ \[$(tput sgr0)\]"
 export SVNURL=https://sourcecontrol.ae.sda.corp.telstra.com
 export EDITOR='/usr/bin/vim'
 
