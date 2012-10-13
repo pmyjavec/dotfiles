@@ -24,11 +24,16 @@ Bundle 'tpope/vim-vividchalk.git'
 Bundle 'sukima/xmledit'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'sunaku/vim-ruby-minitest'
 " vim-scripts repos
 " non github repos
 " ...
 
 filetype plugin indent off
 filetype on
+filetype plugin on
 syntax on
 colorscheme vividchalk
+" Wrap lines automatically
+set wrap
+set textwidth=72
