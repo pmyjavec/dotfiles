@@ -10,3 +10,12 @@ declare -x GEM_PATH=~/.gems
 declare -x GEM_HOME=~/.gems
 declare -x PATH=$PATH:~/.gems/bin:~/.rbenv/shims:~/sbin/:~/Projects/tecs-software-suite-2.5/
 set -o vi
+
+function gemexec() { ruby -I lib/ $1 $2; }
+
+keychain id_rsa
+[ -z "$HOSTNAME" ] && HOSTNAME=`uname -n`
+[ -f $HOME/.keychain/$HOSTNAME-sh ] && \
+        . $HOME/.keychain/$HOSTNAME-sh
+[ -f $HOME/.keychain/$HOSTNAME-sh-gpg ] && \
+        . $HOME/.keychain/$HOSTNAME-sh-gpg
