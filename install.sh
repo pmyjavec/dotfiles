@@ -23,5 +23,5 @@ done
 # Sets up gem home etc from bash_profile, installs gems
 source ~/.bash_profile
 echo "Installing my favourite gems..."
-which bundle 1>&2> /dev/null && bundle install || echo "Check your ruby env...bundler missing"
+which bundle 1>&2> /dev/null && bundle install || (gem install bundler; bundle install)
 echo done
