@@ -5,6 +5,7 @@ set ts=2
 set shiftwidth=2
 set expandtab
 set wrap
+set textwidth=80
 set background=dark
 syntax on
 filetype off                   " required!
