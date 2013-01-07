@@ -7,7 +7,7 @@ export EDITOR='/usr/bin/vim'
 alias 'vi=vim'
 declare -x GEM_PATH=~/.gems
 declare -x GEM_HOME=~/.gems
-declare -x PATH=$PATH:~/.gems/bin:~/.rbenv/shims:~/sbin/:~/Projects/tecs-software-suite-2.5/
+declare -x PATH=$PATH:~/bin:~/.gems/bin:~/.rbenv/shims:~/sbin/:~/Projects/tecs-software-suite-2.5/
 set -o vi
 
 function gemexec() { ruby -I lib/ $1 $2; }

@@ -7,7 +7,7 @@ set expandtab
 set wrap
 set textwidth=80
 set background=dark
-syntax on
+syntax enable
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
@@ -33,9 +33,18 @@ Bundle "tomtom/tlib_vim"
 Bundle "honza/snipmate-snippets"
 Bundle "garbas/vim-snipmate"
 Bundle 'rodjek/vim-puppet'
+Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent off
 filetype on
 filetype plugin on
 syntax on
-colorscheme vividchalk
+
+" solarized options 
+let g:solarized_termcolors = 256
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:solarized_termtrans = 1
+
+" Set my color scheme
+colorscheme solarized
