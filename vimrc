@@ -1,4 +1,4 @@
-set nocompatible               " be iMproved
+
 set list
 set t_Co=256
 set ts=2
@@ -7,6 +7,11 @@ set expandtab
 set wrap
 set textwidth=80
 set background=dark
+" Used by Lusty Explorer
+set hidden
+" Leader key is best when most accessible :)
+let mapleader=" "
+
 syntax enable
 filetype off                   " required!
 
@@ -18,8 +23,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
-"
-" original repos on github
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-rails.git'
@@ -34,6 +37,9 @@ Bundle "honza/snipmate-snippets"
 Bundle "garbas/vim-snipmate"
 Bundle 'rodjek/vim-puppet'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'sjbach/lusty'
+Bundle 'scrooloose/nerdtree'
+Bundle 'mileszs/ack.vim'
 
 filetype plugin indent off
 filetype on
