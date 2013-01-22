@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+source ~/.privates
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -30,8 +31,12 @@ plugins=(git gem svn yum)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=~/.gems/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
-GEM_HOME=~/.gems
-GEM_PATH=~/.gems
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+
+export PATH=$PATH:$HOME/bin
+export XPATH=$PATH:$HOME/bin
+
+# RVM baby
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#`walkabout get`
