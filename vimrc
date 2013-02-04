@@ -24,7 +24,7 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-vividchalk.git'
 Bundle 'sukima/xmledit'
@@ -37,14 +37,18 @@ Bundle "honza/snipmate-snippets"
 Bundle "garbas/vim-snipmate"
 Bundle 'rodjek/vim-puppet'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'sjbach/lusty'
-Bundle 'scrooloose/nerdtree'
 Bundle 'mileszs/ack.vim'
+Bundle 'jamessan/vim-gnupg'
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'benmills/vimux'
+Bundle 'emergion/lusty'
+
 
 filetype plugin indent off
 filetype on
 filetype plugin on
 syntax on
+filetype plugin indent on
 
 " solarized options 
 let g:solarized_termcolors = 256

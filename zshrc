@@ -37,6 +37,5 @@ bindkey '^R' history-incremental-search-backward
 export PATH=$PATH:$HOME/bin
 export XPATH=$PATH:$HOME/bin
 
-# RVM baby
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 #`walkabout get`
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

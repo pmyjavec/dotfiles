@@ -1,2 +1,9 @@
 set editing-mode vi
 set keymap vi
+
+$if Ruby
+  "\C-o": "\C-x\C-e"
+$endif
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+
