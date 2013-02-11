@@ -11,6 +11,11 @@ set background=dark
 set hidden
 " Leader key is best when most accessible :)
 let mapleader=" "
+map <Leader>; :VimuxPromptCommand <CR>
+map <Leader>c :VimuxCloseRunner <CR>
+map <Leader>e :Gedit <CR>
+map <Leader>g :Grep 
+map <Leader>r :Grep -r
 
 syntax enable
 filetype off                   " required!
@@ -42,7 +47,8 @@ Bundle 'jamessan/vim-gnupg'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'benmills/vimux'
 Bundle 'emergion/lusty'
-
+Bundle 'pgr0ss/vimux-ruby-test' 
+Bundle 'vim-scripts/grep.vim'
 
 filetype plugin indent off
 filetype on
