@@ -34,8 +34,21 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
-export PATH=$PATH:$HOME/bin
-export XPATH=$PATH:$HOME/bin
+export PATH=/usr/local/bin:$PATH::$HOME/bin
+#export XPATH=/usr/local/bin:$PATH:$HOME/bin
 
 #`walkabout get`
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH=.bin:~/.bin:$PATH:/usr/local/share/python
+
+# Makes rake arguments work with zsh
+alias rake='noglob rake'
+
+# Setup a proxy easily if onsite
+LOCAL_PROXY="http://localhost:3128"
+alias set_proxy="export {all_proxy,http_proxy,https_proxy}=$LOCAL_PROXY" 
+alias unset_proxy="unset {all_proxy,http_proxy,https_proxy}"
+
+# Python virtualenv  + virtualenvwrapper stuff
+export WORKON_HOME=$HOME/.python-envs
+source /usr/local/share/python/virtualenvwrapper_lazy.sh
