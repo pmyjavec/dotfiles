@@ -52,3 +52,4 @@ alias unset_proxy="unset {all_proxy,http_proxy,https_proxy}"
 # Python virtualenv  + virtualenvwrapper stuff
 export WORKON_HOME=$HOME/.python-envs
 source /usr/local/share/python/virtualenvwrapper_lazy.sh
+export PROJECT_HOME=$HOME/work
