@@ -4,10 +4,6 @@
 cd `dirname $0`
 echo `pwd`
 
-echo "Installing/updating Vundle"
-which git 1>&2> /dev/null && (if [ ! -d ~/.vim/bundle ] ; then git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle; fi )\
-        || (echo Install Git first...; exit 1)
- 
 echo Updating RC files...
 git pull
 
@@ -20,8 +16,7 @@ for i in `ls .`; do
   fi 
 done
 
-# Sets up gem home etc from bash_profile, installs gems
-source ~/.bash_profile
-echo "Installing my favourite gems..."
-which bundle 1>&2> /dev/null && bundle install || (gem install bundler; bundle install)
-echo done
+echo "Installing/updating Vundle"
+which git 1>&2> /dev/null && (if [ ! -d ~/.vim/bundle ] ; then git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle; fi )\
+        || (echo Install Git first...; exit 1)
+ 
