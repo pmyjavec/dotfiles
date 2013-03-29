@@ -1,0 +1,3 @@
+--ignore-dir=.gems
+--ignore-dir=.bin
+-type-set=puppet=.pp
