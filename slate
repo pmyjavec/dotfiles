@@ -9,7 +9,7 @@ config windowHintsSpread true
 # Aliases
 #--------------------------------------------------------------------
 # Modal key
-alias modal-key ctrl,s 
+alias modal-key ctrl,l
 alias move-key ctrl,cmd
 
 # Some apps
