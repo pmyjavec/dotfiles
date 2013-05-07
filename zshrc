@@ -53,3 +53,4 @@ alias unset_proxy="unset {all_proxy,http_proxy,https_proxy}"
 export WORKON_HOME=$HOME/.python-envs
 source /usr/local/share/python/virtualenvwrapper_lazy.sh
 export PROJECT_HOME=$HOME/work
+alias bundle='nocorrect bundle'

@@ -6,6 +6,8 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
+
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rodjek/vim-puppet'
@@ -26,20 +28,23 @@ Bundle 'honza/snipmate-snippets'
 Bundle 'vim-scripts/tlib'
 Bundle 'nvie/vim-flake8'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'stephenmckinney/vim-solarized-powerline'
+" Careful, this was screwing up vim at one point
+" Bundle 'pgr0ss/vimux-ruby-test' 
 
-set list
+set encoding=utf-8
 set hlsearch
 set t_Co=256
-set ts=2
 set shiftwidth=2
 set expandtab
-set wrap
-set textwidth=80
 set background=dark
 set history=100         " Restore 111 things from viminfo
 set autoindent
 set shiftround
 set viminfo=\"4,'4,/100,:100,h,f0
+set laststatus=2
+
+autocmd FileType c,cpp,python,ruby,java set textwidth=80 autoindent wrap
 
 " Python
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -48,6 +53,7 @@ let g:SuperTabDefaultCompletionType = "context"
 "Highlight as error when chars go past column 80
 autocmd FileType python highlight OverLength ctermbg=red ctermfg=white
 autocmd FileType python match OverLength /\%80v.*/
+autocmd FileType python set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 "  Ruby
 autocmd FileType ruby set expandtab tabstop=2 shiftwidth=2 softtabstop=2
@@ -61,8 +67,12 @@ let mapleader=';'
 let g:EasyMotion_leader_key = '<Leader><Leader>'
 
 map <Leader>m :VimuxPromptCommand<CR>
+map <Leader>a :RunAllRubyTests<CR>
+map <Leader>c :VimuxCloseRunner<CR>
 map <Leader>n :NERDTreeToggle<CR>
-map <Leader>m :VimuxPromptCommand<CR>
+map <Leader>i :set list!<CR>
+map <Leader>w :w<CR>
+map <Leader>s :SyntasticCheck<CR>
 
 if &t_Co > 2 || has("gui_running")
   syntax on
@@ -77,19 +87,25 @@ let g:solarized_termcolors = 256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
-let g:Powerline_theme='short'
-let g:Powerline_colorscheme='solarized256'
 
 " Set my color scheme
 colorscheme solarized
 
-" Cool icons in Powerline status bar
-let g:Powerline_symbols = 'fancy'
-
 " NERDTree
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '\.gem$']
 
 " Stops conflicts with the Ack.vim plugin's quickfix window
-let g:pyflakes_use_quickfix = 0
+" let g:pyflakes_use_quickfix = 0
 
 set wildignore=*.o,*~,*.pyc,.gems/*
+
+" Remove white space on save for the following filetypes
+" autocmd FileType c,cpp,python,ruby,java autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+"Vim ruby tests
+let g:vimux_ruby_cmd_unit_test = "nocorrect bundle exec rspec"
+let g:vimux_ruby_cmd_all_tests = "nocorrect bundle exec rspec"
+let g:vimux_ruby_cmd_context = "nocorrect bundle exec rspec"
+
+
+

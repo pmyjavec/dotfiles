@@ -19,6 +19,7 @@ alias music 'Rdio'
 alias terminal 'iTerm'
 alias twitter 'Tweetbot'
 alias tomatoes 'Tomatoes'
+alias mind-mapper 'MindNode Pro'
 
 # Easy helpers for long variable names...
 alias sox screenOriginX
@@ -61,6 +62,7 @@ bind m:${move-key} ${bot-right-corner}
 bind b:${modal-key} focus ${browser}
 bind i:${modal-key} focus ${irc}
 bind m:${modal-key} focus ${music}
+bind n:${modal-key} focus ${mind-mapper}
 bind c:${modal-key} focus ${terminal}
 bind w:${modal-key} focus ${twitter}
 bind o:${modal-key} focus ${tomatoes}
