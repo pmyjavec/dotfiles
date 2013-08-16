@@ -1,3 +1,7 @@
 --ignore-dir=.gems
+--ignore-dir=coverage_report
 --ignore-dir=.bin
+--ignore-dir=coverage_report
+--ignore-dir=bundler
+--ignore-dir=bundle
 -type-set=puppet=.pp

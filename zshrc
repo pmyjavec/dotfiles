@@ -54,3 +54,7 @@ export WORKON_HOME=$HOME/.python-envs
 source /usr/local/share/python/virtualenvwrapper_lazy.sh
 export PROJECT_HOME=$HOME/work
 alias bundle='nocorrect bundle'
+alias work='cd ~/work'
+alias vi='vim'
+
+source `brew --prefix`/etc/profile.d/z.sh

@@ -26,9 +26,9 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/snipmate-snippets'
 Bundle 'vim-scripts/tlib'
-Bundle 'nvie/vim-flake8'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'stephenmckinney/vim-solarized-powerline'
+Bundle 'majutsushi/tagbar'
+Bundle 'Valloric/YouCompleteMe'
 " Careful, this was screwing up vim at one point
 " Bundle 'pgr0ss/vimux-ruby-test' 
 
@@ -44,7 +44,7 @@ set shiftround
 set viminfo=\"4,'4,/100,:100,h,f0
 set laststatus=2
 
-autocmd FileType c,cpp,python,ruby,java set textwidth=80 autoindent wrap
+autocmd FileType c,cpp,python,ruby,java,markdown set textwidth=80 autoindent wrap cc=80
 
 " Python
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -52,7 +52,7 @@ set completeopt=menuone,longest,preview
 let g:SuperTabDefaultCompletionType = "context"
 "Highlight as error when chars go past column 80
 autocmd FileType python highlight OverLength ctermbg=red ctermfg=white
-autocmd FileType python match OverLength /\%80v.*/
+autocmd FileType python match OverLength /\%100v.*/
 autocmd FileType python set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 "  Ruby
@@ -73,6 +73,7 @@ map <Leader>n :NERDTreeToggle<CR>
 map <Leader>i :set list!<CR>
 map <Leader>w :w<CR>
 map <Leader>s :SyntasticCheck<CR>
+map <Leader>b :TagbarToggle<CR>
 
 if &t_Co > 2 || has("gui_running")
   syntax on
@@ -99,13 +100,19 @@ let NERDTreeIgnore = ['\.pyc$', '\.gem$']
 
 set wildignore=*.o,*~,*.pyc,.gems/*
 
-" Remove white space on save for the following filetypes
-" autocmd FileType c,cpp,python,ruby,java autocmd BufWritePre <buffer> :%s/\s\+$//e
+" Remove trailing white space on save for the following filetypes
+autocmd FileType c,cpp,python,ruby,java,puppet autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 "Vim ruby tests
 let g:vimux_ruby_cmd_unit_test = "nocorrect bundle exec rspec"
 let g:vimux_ruby_cmd_all_tests = "nocorrect bundle exec rspec"
 let g:vimux_ruby_cmd_context = "nocorrect bundle exec rspec"
 
+" Syntastic options
+"let g:syntastic_python_checkers=['/usr/local/share/python/flake8']
+imap '' <esc>a<Plug>snipMateNextOrTrigger
+smap '' <Plug>snipMateNextOrTrigger
 
-
+"YCM Options
+let g:ycm_autoclose_preview_window_after_completion=1
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
