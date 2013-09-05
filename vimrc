@@ -85,7 +85,6 @@ if has("autocmd")
 
 " solarized options 
 let g:solarized_termcolors = 256
-let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
 
@@ -116,3 +115,7 @@ smap '' <Plug>snipMateNextOrTrigger
 "YCM Options
 let g:ycm_autoclose_preview_window_after_completion=1
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Display punctuation marks for cleaner code
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
