@@ -45,7 +45,7 @@ export PATH=.bin:~/.bin:$PATH:/usr/local/share/python
 alias rake='noglob rake'
 
 # Setup a proxy easily if onsite
-LOCAL_PROXY="http://localhost:3128"
+LOCAL_PROXY="http://hydrogen.local:3128"
 alias set_proxy="export {all_proxy,http_proxy,https_proxy}=$LOCAL_PROXY" 
 alias unset_proxy="unset {all_proxy,http_proxy,https_proxy}"
 

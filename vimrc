@@ -1,4 +1,4 @@
-" Vundle manages plug-ins 
+" Vundle manages plug-ins
 set nocompatible
 
 filetype off
@@ -8,6 +8,7 @@ call vundle#rc()
 
 set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
 
+Bundle 'depuracao/vim-rdoc'
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rodjek/vim-puppet'
@@ -24,13 +25,13 @@ Bundle 'scrooloose/syntastic'
 Bundle 'mileszs/ack.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'garbas/vim-snipmate'
-Bundle 'honza/snipmate-snippets'
+Bundle 'https://github.com/honza/vim-snippets'
 Bundle 'vim-scripts/tlib'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'majutsushi/tagbar'
-Bundle 'Valloric/YouCompleteMe'
-" Careful, this was screwing up vim at one point
-" Bundle 'pgr0ss/vimux-ruby-test' 
+Bundle 'avakhov/vim-yaml'
+Bundle 'FredKSchott/CoVim'
+Bundle 'tpope/vim-surround'
 
 set encoding=utf-8
 set hlsearch
@@ -59,6 +60,8 @@ autocmd FileType python set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType ruby set expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType ruby highlight OverLength ctermbg=red ctermfg=white
 
+autocmd FileType c set expandtab tabstop=8 shiftwidth=8 softtabstop=8
+
 " Used by Lusty Explorer
 set hidden
 
@@ -83,39 +86,40 @@ if has("autocmd")
     filetype plugin indent on
   endif
 
-" solarized options 
+" solarized options
 let g:solarized_termcolors = 256
-let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
 
 " Set my color scheme
 colorscheme solarized
 
 " NERDTree
-let NERDTreeIgnore = ['\.pyc$', '\.gem$']
+let NERDTreeIgnore = ['\.pyc$', '\.gem$', '\.out']
 
 " Stops conflicts with the Ack.vim plugin's quickfix window
 " let g:pyflakes_use_quickfix = 0
 
-set wildignore=*.o,*~,*.pyc,.gems/*
+set wildignore=*.o,*~,*.pyc,.gems/*,*.out
 
-" Remove trailing white space on save for the following filetypes
-autocmd FileType c,cpp,python,ruby,java,puppet autocmd BufWritePre <buffer> :%s/\s\+$//e
+" Remove trailing white space on save for all filet ypes
+autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 "Vim ruby tests
 let g:vimux_ruby_cmd_unit_test = "nocorrect bundle exec rspec"
 let g:vimux_ruby_cmd_all_tests = "nocorrect bundle exec rspec"
 let g:vimux_ruby_cmd_context = "nocorrect bundle exec rspec"
 
-" Syntastic options
-"let g:syntastic_python_checkers=['/usr/local/share/python/flake8']
-imap '' <esc>a<Plug>snipMateNextOrTrigger
-smap '' <Plug>snipMateNextOrTrigger
-
-"YCM Options
+" YCM Options
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_filetype_specific_completion_to_disable='c'
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Snipmate
+imap <C-k> <esc>a<Plug>snipMateNextOrTrigger
+smap <C-k> <Plug>snipMateNextOrTrigger
+
 
 " Display punctuation marks for cleaner code
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
