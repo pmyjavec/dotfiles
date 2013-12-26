@@ -8,7 +8,8 @@ call vundle#rc()
 
 set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
 
-Bundle 'depuracao/vim-rdoc'
+Bundle 'ralph/go.vim'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rodjek/vim-puppet'
