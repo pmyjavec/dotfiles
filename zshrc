@@ -46,7 +46,7 @@ alias rake='noglob rake'
 
 # Setup a proxy easily if onsite
 LOCAL_PROXY="http://hydrogen.local:3128"
-alias set_proxy="export {all_proxy,http_proxy,https_proxy}=$LOCAL_PROXY" 
+alias set_proxy="export {all_proxy,http_proxy,https_proxy}=$LOCAL_PROXY"
 alias unset_proxy="unset {all_proxy,http_proxy,https_proxy}"
 
 # Python virtualenv  + virtualenvwrapper stuff
@@ -58,3 +58,5 @@ alias work='cd ~/work'
 alias vi='vim'
 
 source `brew --prefix`/etc/profile.d/z.sh
+
+compctl -g '~/.teamocil/*(:t:r)' teamocil

@@ -1,0 +1,11 @@
+windows:
+  - name: "c_prog_lang"
+    root: "~/Projects/c_prog_lang"
+    layout: main-vertical
+    filters:
+      after: "echo 'I am done initializing this pane.'"
+    panes:
+      - cmd: "vim -c 'NERDTreeToggle'"
+        focus: true
+      - cmd: "guard"
+      - cmd: "git status"

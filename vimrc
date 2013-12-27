@@ -103,7 +103,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.gem$', '\.out']
 set wildignore=*.o,*~,*.pyc,.gems/*,*.out
 
 " Remove trailing white space on save for all filet ypes
-autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 
 "Vim ruby tests
 let g:vimux_ruby_cmd_unit_test = "nocorrect bundle exec rspec"
