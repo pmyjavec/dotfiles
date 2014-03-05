@@ -2,11 +2,20 @@
 ZSH=$HOME/.oh-my-zsh
 source ~/.privates
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+bindkey -M vicmd '?' history-incremental-search-backward
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="pygmalion"
+
+# Vim
+export EDITOR=/usr/local/bin/vim
+export EDITOR=/usr/local/bin/vim
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -34,7 +43,7 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
-export PATH=/usr/local/bin:$PATH::$HOME/bin
+export PATH=/usr/local/bin:$PATH::$HOME/bin:/Applications/VMware\ OVF\ Tool/
 #export XPATH=/usr/local/bin:$PATH:$HOME/bin
 
 #`walkabout get`
@@ -54,9 +63,22 @@ export WORKON_HOME=$HOME/.python-envs
 source /usr/local/share/python/virtualenvwrapper_lazy.sh
 export PROJECT_HOME=$HOME/work
 alias bundle='nocorrect bundle'
-alias work='cd ~/work'
+
 alias vi='vim'
+alias grep='grep --color=always'
 
 source `brew --prefix`/etc/profile.d/z.sh
 
 compctl -g '~/.teamocil/*(:t:r)' teamocil
+
+#GO
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
+# Vagrant
+export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
+export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/"
+
+# boot2docker
+export DOCKER_HOST=tcp://localhost:4243
+

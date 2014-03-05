@@ -9,7 +9,7 @@ set -o vi
 declare -x CLICOLOR='Yes'
 declare -x GEM_PATH=~/.gems
 declare -x GEM_HOME=~/.gems
-declare -x EDITOR='/usr/bin/env vim'
+declare -x EDITOR='vim'
 declare -x PATH=/usr/local/bin:/usr/local/sbin:~/bin:~/.gems/bin:~/sbin:$PATH
 
 # PS1

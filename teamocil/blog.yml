@@ -1,0 +1,10 @@
+windows:
+  - name: "blog"
+    root: "~/projects/blog"
+    layout: "b1c2,178x51,0,0{90x51,0,0,9,87x51,91,0[87x25,91,0,7,87x25,91,26,8]}"
+    panes:
+      - cmd: "vim"
+        focus: true
+        width: 70
+      - cmd: "jekyll serve -w"
+      - cmd: "git status"

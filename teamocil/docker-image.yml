@@ -1,0 +1,9 @@
+windows:
+  - name: "docker-image"
+    root: "~/work/docker-base-image"
+    layout: "tiled"
+    panes:
+      - cmd: "vim -c 'NERDTreeToggle'"
+        focus: true
+        width: 70
+      - cmd: "vagrant ssh"
