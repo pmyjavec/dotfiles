@@ -76,8 +76,10 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
 # Vagrant
-export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
 export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/"
+
+# NPM
+export PATH="./node_modules/.bin:$PATH"
 
 # boot2docker
 export DOCKER_HOST=tcp://localhost:4243

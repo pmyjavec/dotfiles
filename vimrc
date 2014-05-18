@@ -16,6 +16,7 @@ Bundle 'https://github.com/honza/dockerfile.vim.git'
 "
 "
 Bundle 'https://github.com/chase/vim-ansible-yaml.git'
+Bundle 'https://github.com/nathanaelkane/vim-indent-guides.git'
 Bundle 'https://github.com/jstemmer/gotags.git'
 Bundle 'https://github.com/undx/vim-gocode.git'
 Bundle 'Valloric/YouCompleteMe'
@@ -60,7 +61,9 @@ set laststatus=2
 
 autocmd FileType c,cpp,python,ruby,java,markdown set textwidth=80 autoindent wrap cc=80
 
+" Markdown
 au BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Python
 "Highlight as error when chars go past column 80
@@ -91,6 +94,7 @@ map <Leader>c :VimuxCloseRunner<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>m :NERDTreeFocus<CR>
 map <Leader>i :set list!<CR>
+map <Leader>u :IndentGuidesToggle<CR>
 map <Leader>w <ESC><CR>
 map <Leader>s hysiw"
 map <Leader>b :TagbarToggle<CR>
@@ -177,5 +181,3 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
-
-autocmd VimEnter * NERDTree
