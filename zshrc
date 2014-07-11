@@ -84,3 +84,5 @@ export PATH="./node_modules/.bin:$PATH"
 # boot2docker
 export DOCKER_HOST=tcp://localhost:4243
 
+export ANSIBLE_HOST_KEY_CHECKING=False
+

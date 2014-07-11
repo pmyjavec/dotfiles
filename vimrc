@@ -6,8 +6,6 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
-
 Bundle 'gmarik/vundle'
 "
 "
@@ -18,12 +16,10 @@ Bundle 'https://github.com/honza/dockerfile.vim.git'
 Bundle 'https://github.com/chase/vim-ansible-yaml.git'
 Bundle 'https://github.com/nathanaelkane/vim-indent-guides.git'
 Bundle 'https://github.com/jstemmer/gotags.git'
-Bundle 'https://github.com/undx/vim-gocode.git'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'https://github.com/Raimondi/delimitMate.git'
-Bundle 'ralph/go.vim'
+Bundle 'fatih/vim-go'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
 Bundle 'rodjek/vim-puppet'
 Bundle 'sukima/xmledit'
 Bundle 'tomtom/tcomment_vim'
@@ -58,6 +54,7 @@ set autoindent
 set shiftround
 set viminfo=\"4,'4,/100,:100,h,f0
 set laststatus=2
+set tabstop=4
 
 autocmd FileType c,cpp,python,ruby,java,markdown set textwidth=80 autoindent wrap cc=80
 
@@ -131,7 +128,7 @@ let g:vimux_ruby_cmd_all_tests = "nocorrect bundle exec rspec"
 let g:vimux_ruby_cmd_context = "nocorrect bundle exec rspec"
 
 " YCM Options
- let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_completion=1
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_extra_conf_globlist = ['~/projects/c_prog_lang/','!~/*']
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
@@ -153,31 +150,9 @@ let g:clang_debug = 1
 let g:clang_library_path = '/usr/lib/'
 let g:clang_user_options='|| exit 0'
 
-" Go tags
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
+
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+
+" https://github.com/fatih/vim-go/issues/73
+let g:go_fmt_command = "gofmt"

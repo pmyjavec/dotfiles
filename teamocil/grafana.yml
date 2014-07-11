@@ -1,0 +1,10 @@
+windows:
+  - name: "grafana"
+    root: "~/projects/grafana"
+    panes:
+      - cmd: "vim -c 'NERDTreeToggle'"
+        focus: true
+        width: 70
+      - cmd: "influxdb -config /usr/local/etc/influxdb.conf"
+      - cmd: "grunt server"
+      - cmd: "/usr/local/sbin/collectd -C /usr/local/etc/collectd.conf -f"
