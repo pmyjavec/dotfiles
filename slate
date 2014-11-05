@@ -16,11 +16,8 @@ alias move-key ctrl,cmd
 alias browser 'Google Chrome'
 alias irc 'Textual'
 alias music 'Rdio'
-alias books 'Kindle'
 alias terminal 'iTerm'
 alias twitter 'Tweetbot'
-alias tomatoes 'Tomatoes'
-alias mind-mapper 'MindNode Pro'
 
 # Easy helpers for long variable names...
 alias sox screenOriginX
@@ -40,12 +37,6 @@ alias bot-left-corner move ${sox};${soy}+${ssy}/2 ${ssx}/2;${ssy}/2
 alias bot-right-corner move ${sox}+${ssx}/2;${soy}+${ssy}/2 ${ssx}/2;${ssy}/2
 
 #--------------------------------------------------------------------
-# Layouts
-#--------------------------------------------------------------------
-layout single-monitor ${tomatoes} ${right-half}
-layout single-monitor ${twitter} ${full}
-
-#--------------------------------------------------------------------
 # Bindings
 #--------------------------------------------------------------------
 # Move windows to certain locations on the screen
@@ -63,12 +54,7 @@ bind m:${move-key} ${bot-right-corner}
 bind b:${modal-key} focus ${browser}
 bind i:${modal-key} focus ${irc}
 bind m:${modal-key} focus ${music}
-bind k:${modal-key} focus ${books}
-bind n:${modal-key} focus ${mind-mapper}
-bind c:${modal-key} focus ${terminal}
+bind t:${modal-key} focus ${terminal}
 bind w:${modal-key} focus ${twitter}
-bind o:${modal-key} focus ${tomatoes}
 bind ;:${modal-key} hint asfd;lkj
 
-# Layouts
-bind 1:${modal-key} sequence layout single-monitor

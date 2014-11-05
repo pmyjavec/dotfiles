@@ -82,7 +82,9 @@ export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library/"
 export PATH="./node_modules/.bin:$PATH"
 
 # boot2docker
-export DOCKER_HOST=tcp://localhost:4243
+export DOCKER_HOST=tcp://192.168.59.103:2375
+unset DOCKER_CERT_PATH
+unset DOCKER_TLS_VERIFY
 
-export ANSIBLE_HOST_KEY_CHECKING=False
-
+source /Users/pmyjavec/.iterm2_shell_integration.zsh
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD

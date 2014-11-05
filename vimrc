@@ -41,6 +41,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'avakhov/vim-yaml'
 Bundle 'FredKSchott/CoVim'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-abolish'
 Bundle 'elzr/vim-json'
 Bundle 'lrampa/vim-apib'
 
@@ -48,13 +49,14 @@ set encoding=utf-8
 set hlsearch
 set t_Co=256
 set expandtab
-set background=dark
+set background=light
 set history=100         " Restore 111 things from viminfo
 set autoindent
 set shiftround
 set viminfo=\"4,'4,/100,:100,h,f0
 set laststatus=2
 set tabstop=4
+set softtabstop=4
 
 autocmd FileType c,cpp,python,ruby,java,markdown set textwidth=80 autoindent wrap cc=80
 
@@ -75,6 +77,7 @@ autocmd FileType ruby highlight OverLength ctermbg=red ctermfg=white
 " Shell
 autocmd FileType sh set expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
+" C
 autocmd FileType c set expandtab tabstop=8 shiftwidth=8 softtabstop=8
 
 " Used by Lusty Explorer
@@ -131,7 +134,7 @@ let g:vimux_ruby_cmd_context = "nocorrect bundle exec rspec"
 let g:ycm_autoclose_preview_window_after_completion=1
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_extra_conf_globlist = ['~/projects/c_prog_lang/','!~/*']
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/projects/dotfiles/ycm_extra_conf.py'
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
@@ -141,7 +144,6 @@ smap <C-k> <Plug>snipMateNextOrTrigger
 
 
 " Display punctuation marks for cleaner code
-set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 let g:clang_complete_auto = 1
@@ -150,9 +152,5 @@ let g:clang_debug = 1
 let g:clang_library_path = '/usr/lib/'
 let g:clang_user_options='|| exit 0'
 
-
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
-
-" https://github.com/fatih/vim-go/issues/73
-let g:go_fmt_command = "gofmt"
