@@ -3,4 +3,5 @@
 --ignore-dir=.bin
 --ignore-dir=coverage_report
 --ignore-dir=.bundle
+--ignore-dir=_site
 -type-set=puppet=.pp

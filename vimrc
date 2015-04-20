@@ -38,7 +38,6 @@ Bundle 'https://github.com/honza/vim-snippets'
 Bundle 'vim-scripts/tlib'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'majutsushi/tagbar'
-Bundle 'avakhov/vim-yaml'
 Bundle 'FredKSchott/CoVim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
@@ -58,7 +57,7 @@ set laststatus=2
 set tabstop=4
 set softtabstop=4
 
-autocmd FileType c,cpp,python,ruby,java,markdown set textwidth=80 autoindent wrap cc=80
+autocmd FileType c,cpp,python,ruby,java,markdown set textwidth=120 autoindent wrap cc=120
 
 " Markdown
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -69,6 +68,9 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType python highlight OverLength ctermbg=red ctermfg=white
 autocmd FileType python match OverLength /\%100v.*/
 autocmd FileType python set expandtab tabstop=4 shiftwidth=4 softtabstop=4
+
+" YAML
+autocmd FileType yaml set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 "  Ruby
 autocmd FileType ruby set expandtab tabstop=2 shiftwidth=2 softtabstop=2
@@ -108,7 +110,6 @@ if has("autocmd")
   endif
 
 " solarized options
-let g:solarized_termcolors = 256
 let g:solarized_termtrans = 1
 
 " Set my color scheme
