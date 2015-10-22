@@ -14,6 +14,7 @@ Bundle 'https://github.com/honza/dockerfile.vim.git'
 "
 "
 Bundle 'https://github.com/chase/vim-ansible-yaml.git'
+Bundle 'robbles/logstash.vim.git'
 Bundle 'https://github.com/nathanaelkane/vim-indent-guides.git'
 Bundle 'https://github.com/jstemmer/gotags.git'
 Bundle 'Valloric/YouCompleteMe'
@@ -39,7 +40,6 @@ Bundle 'vim-scripts/tlib'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'majutsushi/tagbar'
 Bundle 'FredKSchott/CoVim'
-Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'elzr/vim-json'
 Bundle 'lrampa/vim-apib'
@@ -82,6 +82,9 @@ autocmd FileType sh set expandtab tabstop=2 shiftwidth=2 softtabstop=2
 " C
 autocmd FileType c set expandtab tabstop=8 shiftwidth=8 softtabstop=8
 
+" JSON
+autocmd FileType json set expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
 " Used by Lusty Explorer
 set hidden
 
@@ -116,7 +119,7 @@ let g:solarized_termtrans = 1
 colorscheme solarized
 
 " NERDTree
-let NERDTreeIgnore = ['\.pyc$', '\.gem$', '\.out']
+let NERDTreeIgnore = ['\.pyc$', '\.gem$', '\.out', '\.vim$', '\~$', '_site']
 
 " Stops conflicts with the Ack.vim plugin's quickfix window
 " let g:pyflakes_use_quickfix = 0
@@ -155,3 +158,5 @@ let g:clang_user_options='|| exit 0'
 
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
+
+set backspace=indent,eol,start

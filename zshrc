@@ -27,7 +27,7 @@ eval "$(rbenv init -)"
 eval $(ssh-agent -s > /dev/null)
 
 # Proxy when at the Enterpri$e
-if [[ `networksetup -getcurrentlocation` == 'Work' || `networksetup -getcurrentlocation` == 'Work\ Remote' ]]; then
+if [[ `networksetup -getcurrentlocation` == 'Work' || `networksetup -getcurrentlocation` == 'Work Remote' ]]; then
     LOCAL_PROXY="http://localhost:3128"
     export {all_proxy,http_proxy,https_proxy}=$LOCAL_PROXY
 fi
@@ -41,10 +41,13 @@ export VISUAL='/usr/local/bin/vim'
 export ANSIBLE_SSH_CONTROL_PATH='/tmp/'
 
 # Path
-export PATH=.bin:$PATH
-
+export GOPATH="$HOME/projects/go"
+export PATH=.bin:$PATH:$GOPATH/bin
 
 $(boot2docker shellinit)
 
-# Golang
-export GOPATH="$HOME/projects/go"
+
+# bind k and j for VI mode
+bindkey '^k' history-substring-search-up
+bindkey '^j' history-substring-search-down
+
