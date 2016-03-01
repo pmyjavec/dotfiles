@@ -39,16 +39,17 @@ Bundle 'https://github.com/honza/vim-snippets'
 Bundle 'vim-scripts/tlib'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'majutsushi/tagbar'
-Bundle 'FredKSchott/CoVim'
 Bundle 'tpope/vim-abolish'
 Bundle 'elzr/vim-json'
 Bundle 'lrampa/vim-apib'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 set encoding=utf-8
 set hlsearch
 set t_Co=256
 set expandtab
-set background=light
+set background=dark
 set history=100         " Restore 111 things from viminfo
 set autoindent
 set shiftround
@@ -158,5 +159,8 @@ let g:clang_user_options='|| exit 0'
 
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
+
+" Set airline theme
+let g:airline_theme='base16_solarized'
 
 set backspace=indent,eol,start

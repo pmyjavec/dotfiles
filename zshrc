@@ -26,14 +26,7 @@ eval "$(rbenv init -)"
 # SSH Agent
 eval $(ssh-agent -s > /dev/null)
 
-# Proxy when at the Enterpri$e
-if [[ `networksetup -getcurrentlocation` == 'Work' || `networksetup -getcurrentlocation` == 'Work Remote' ]]; then
-    LOCAL_PROXY="http://localhost:3128"
-    export {all_proxy,http_proxy,https_proxy}=$LOCAL_PROXY
-fi
-alias unset_proxy="unset {all_proxy,http_proxy,https_proxy}"
-
-# VIMMMMMM
+# Use latest VIM installed with Homebrew
 export EDITOR='/usr/local/bin/vim'
 export VISUAL='/usr/local/bin/vim'
 
@@ -44,10 +37,11 @@ export ANSIBLE_SSH_CONTROL_PATH='/tmp/'
 export GOPATH="$HOME/projects/go"
 export PATH=.bin:$PATH:$GOPATH/bin
 
-$(boot2docker shellinit)
+#$(boot2docker shellinit)
 
 
 # bind k and j for VI mode
 bindkey '^k' history-substring-search-up
 bindkey '^j' history-substring-search-down
 
+DEFAULT_USER="pmyjavec"
