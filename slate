@@ -9,15 +9,16 @@ config windowHintsSpread true
 # Aliases
 #--------------------------------------------------------------------
 # Modal key
-alias modal-key ctrl,l
+alias modal-key ctrl,h
 alias move-key ctrl,cmd
 
 # Some apps
 alias browser 'Google Chrome'
-alias irc 'Textual'
-alias music 'Rdio'
+alias chat 'Adium'
+alias music 'Spotify'
 alias terminal 'iTerm'
 alias twitter 'Tweetbot'
+alias tomatoes 'Tomatoes'
 
 # Easy helpers for long variable names...
 alias sox screenOriginX
@@ -52,9 +53,10 @@ bind m:${move-key} ${bot-right-corner}
 
 # Focus helpers
 bind b:${modal-key} focus ${browser}
-bind i:${modal-key} focus ${irc}
+bind c:${modal-key} focus ${chat}
 bind m:${modal-key} focus ${music}
 bind t:${modal-key} focus ${terminal}
 bind w:${modal-key} focus ${twitter}
+bind a:${modal-key} focus ${tomatoes}
 bind ;:${modal-key} hint asfd;lkj
 
