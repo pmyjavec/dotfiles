@@ -44,6 +44,8 @@ Bundle 'elzr/vim-json'
 Bundle 'lrampa/vim-apib'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'mhinz/vim-startify'
+
 
 set encoding=utf-8
 set hlsearch
