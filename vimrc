@@ -15,7 +15,7 @@ Bundle 'https://github.com/honza/dockerfile.vim.git'
 "
 Bundle 'https://github.com/chase/vim-ansible-yaml.git'
 Bundle 'robbles/logstash.vim.git'
-Bundle 'https://github.com/nathanaelkane/vim-indent-guides.git'
+Bundle 'Yggdroot/indentLine'
 Bundle 'https://github.com/jstemmer/gotags.git'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'https://github.com/Raimondi/delimitMate.git'
@@ -24,7 +24,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'rodjek/vim-puppet'
 Bundle 'sukima/xmledit'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'sjbach/lusty'
 Bundle 'benmills/vimux'
 Bundle 'jamessan/vim-gnupg'
 Bundle 'Lokaltog/vim-easymotion'
@@ -34,7 +33,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'mileszs/ack.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'garbas/vim-snipmate'
 Bundle 'https://github.com/honza/vim-snippets'
 Bundle 'vim-scripts/tlib'
 Bundle 'kchmck/vim-coffee-script'
@@ -45,6 +43,7 @@ Bundle 'lrampa/vim-apib'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mhinz/vim-startify'
+Plugin 'SirVer/ultisnips'
 
 
 set encoding=utf-8
@@ -95,16 +94,11 @@ set hidden
 let mapleader=';'
 let g:EasyMotion_leader_key = '<Leader><Leader>'
 
-map <Leader>m :VimuxPromptCommand<CR>
 map <Leader>t :CommandT<CR>
-map <Leader>a :RunAllRubyTests<CR>
-map <Leader>c :VimuxCloseRunner<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>m :NERDTreeFocus<CR>
-map <Leader>i :set list!<CR>
 map <Leader>u :IndentGuidesToggle<CR>
 map <Leader>w <ESC><CR>
-map <Leader>s hysiw"
 map <Leader>b :TagbarToggle<CR>
 
 if &t_Co > 2 || has("gui_running")
@@ -137,6 +131,9 @@ let g:vimux_ruby_cmd_unit_test = "nocorrect bundle exec rspec"
 let g:vimux_ruby_cmd_all_tests = "nocorrect bundle exec rspec"
 let g:vimux_ruby_cmd_context = "nocorrect bundle exec rspec"
 
+" UltiSnips Configuration
+let g:UltiSnipsExpandTrigger="<c-j>"
+
 " YCM Options
 let g:ycm_autoclose_preview_window_after_completion=1
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -144,11 +141,6 @@ let g:ycm_extra_conf_globlist = ['~/projects/c_prog_lang/','!~/*']
 let g:ycm_global_ycm_extra_conf = '~/projects/dotfiles/ycm_extra_conf.py'
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
-
-" Snipmate
-imap <C-k> <esc>a<Plug>snipMateNextOrTrigger
-smap <C-k> <Plug>snipMateNextOrTrigger
-
 
 " Display punctuation marks for cleaner code
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
@@ -166,3 +158,5 @@ let g:ycm_server_log_level = 'debug'
 let g:airline_theme='base16_solarized'
 
 set backspace=indent,eol,start
+
+

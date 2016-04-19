@@ -45,3 +45,11 @@ bindkey '^k' history-substring-search-up
 bindkey '^j' history-substring-search-down
 
 DEFAULT_USER="pmyjavec"
+
+eval `ssh-agent -s` > /dev/null
+
+unsetopt correct
+
+eval $(docker-machine env default)
+
+alias ls="ls -la"

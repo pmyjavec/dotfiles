@@ -1,22 +1,14 @@
-#!/bin/bash
-# Sets up everything the way I like it...
+#!/usr/bin/env bash
 
-cd `dirname $0`
-echo `pwd`
 
-echo Updating RC files...
-git pull
+for fn in *; do
+  if [ ! $fn == "README.md" -a ! $fn == "install.sh" ]; then
 
-echo "Install files...existing files will be moved to /tmp"
-for i in `ls .`; do
-  if [ "$i" != "install.sh" ]
-   then
-    mv -v ~/.$i /tmp/$i.bak
-    ln -vs `pwd`/$i ~/.$i
+    target="$HOME/.$fn"
+
+    rm -rf $target
+
+    ln -vs $PWD/$fn $target
+
   fi
 done
-
-echo "Installing/updating Vundle"
-which git 1>&2> /dev/null && (if [ ! -d ~/.vim/bundle ] ; then git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle; fi )\
-        || (echo Install Git first...; exit 1)
-
