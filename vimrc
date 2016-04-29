@@ -98,7 +98,9 @@ map <Leader>t :CommandT<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>m :NERDTreeFocus<CR>
 map <Leader>u :IndentGuidesToggle<CR>
-map <Leader>w <ESC><CR>
+map <Leader>w :write<CR>
+map <Leader>q :wq<CR>
+map <Leader>! :qall<CR>
 map <Leader>b :TagbarToggle<CR>
 
 if &t_Co > 2 || has("gui_running")
@@ -116,7 +118,7 @@ let g:solarized_termtrans = 1
 colorscheme solarized
 
 " NERDTree
-let NERDTreeIgnore = ['\.pyc$', '\.gem$', '\.out', '\.vim$', '\~$', '_site']
+let NERDTreeIgnore = ['\.pyc$', '\.gem$', '\.out', '\.vim$', '\~$', '_site', '\.beam$']
 
 " Stops conflicts with the Ack.vim plugin's quickfix window
 " let g:pyflakes_use_quickfix = 0
@@ -157,6 +159,8 @@ let g:ycm_server_log_level = 'debug'
 " Set airline theme
 let g:airline_theme='base16_solarized'
 
-set backspace=indent,eol,start
+" vim-puppet configuration
+let g:puppet_80chars = 'false'
 
+set backspace=indent,eol,start
 
