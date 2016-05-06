@@ -53,3 +53,4 @@ unsetopt correct
 eval $(docker-machine env default)
 
 alias ls="ls -la"
+alias erl="rlwrap erl -oldshell"
