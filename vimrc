@@ -33,6 +33,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'Raimondi/delimitMate'
 
 Plugin 'altercation/vim-colors-solarized'
 
