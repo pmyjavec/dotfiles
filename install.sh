@@ -12,6 +12,5 @@ for fn in *; do
 done
 
 # NeoVim + Vim configuration file sharing
-mkdir -p ~/.config
-ln -fs ~/.vim ~/.config/nvim
+mkdir -p ~/.config/nvim
 ln -fs ~/.vimrc ~/.config/nvim/init.vim
