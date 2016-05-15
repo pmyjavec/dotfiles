@@ -45,17 +45,17 @@ PROMPT="%{$fg[grey]%}%~%{$fg[green]%} → %{$reset_color%}"
 
 # Right handprompt settings
 autoload -Uz vcs_info #
-zstyle ':vcs_info:*' enable git # Gather information about git repos
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:*' unstagedstr '!'
-
-precmd() {
-    vcs_info
-}
+zstyle ':vcs_info:*' enable git             # Gather information about git repos
+zstyle ':vcs_info:*' check-for-changes true # Check for changes after each command
+zstyle ':vcs_info:*' stagedstr '+'          # When changes are staged, show a +
+zstyle ':vcs_info:*' unstagedstr '-'        # Display - when stages aren't staged
 zstyle ':vcs_info:git*' formats "%{$fg[blue]%}%b %{$fg[grey]%}[%{$fg[red]%}%u%c%{$fg[grey]%}]%{$reset_color%}"
 
-RPROMPT='${vcs_info_msg_0_}'
+precmd() { # Gathers information before updating prompt
+    vcs_info
+}
+
+RPROMPT='${vcs_info_msg_0_}' # Right hand prompt to show information from VCS
 
 # --------------------------------------------------------------------------------
 # Environment Setup
