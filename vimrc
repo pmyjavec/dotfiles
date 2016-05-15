@@ -1,4 +1,5 @@
-call plug#begin('~/.vim/plugged')
+let g:plugin_home="~/.vim/plugged"
+call plug#begin(expand(g:plugin_home)) " Evaluating `nvim` so share plugins with VIM
 
 " Language Plugins
 Plug 'https://github.com/chase/vim-ansible-yaml.git'
@@ -9,13 +10,12 @@ Plug 'lrampa/vim-apib'
 Plug 'elzr/vim-json'
 
 " Misc
-Plug 'ctrlpvim/ctrlp.vim.git' " Easily find flies
+Plug 'junegunn/fzf' " fuzzy finder, brew install fzf to get working
 Plug 'Yggdroot/indentLine'    " Show indent guides
-Plug 'Valloric/YouCompleteMe' " Automatically complete
+Plug 'Shougo/deoplete.nvim'   " Automatically complete
 Plug 'tpope/vim-fugitive'     " Interact with Git from inside Vim
 Plug 'airblade/vim-gitgutter' " Show changes to files in the vim gutter
 Plug 'godlygeek/tabular'      " Makes lining up text easier
-
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
@@ -33,13 +33,16 @@ Plug 'chriskempson/base16-vim' "Themes from base16
 Plug 'pmyjavec/vim-config'
 Plug 'pmyjavec/vim-ftplugins'
 
+call plug#end() " vim-plug
+
 " Turn on filetype plugin and indent loading so that loading the
 " vim-misc stuff below loads the proper files.
 filetype plugin indent on
 
-let g:PersonalVimConfig = "~/.vim/bundle/vim-config/vimrc.vim"
 
 " Load custom vimrc if it exists
-if filereadable(expand(g:PersonalVimConfig))
-    execute "source " . g:PersonalVimConfig
+let g:vim_config_path = expand(plugin_home . "/vim-config/vimrc.vim")
+
+if filereadable(g:vim_config_path)
+    execute "source " . g:vim_config_path
 endif
