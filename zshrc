@@ -1,7 +1,6 @@
 # --------------------------------------------------------------------------------
 # ZSH Options
 # --------------------------------------------------------------------------------
-fpath=( ~/.zsh/functions "${fpath[@]}" ) # Add my functions to load path
 HISTFILE=~/.histfile                     # Where to save history
 HISTSIZE=1000                            # Length of history to keep in buffer
 SAVEHIST=1000                            # Length of history to save
@@ -45,14 +44,17 @@ BASE16_SHELL="$HOME/.base16-shell/base16-monokai.dark.sh"
 PROMPT="%{$fg[grey]%}%~%{$fg[green]%} → %{$reset_color%}"
 
 # Right handprompt settings
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats "%{$fg[blue]%}%b  %m%u%c %{$reset_color%}"
-
+autoload -Uz vcs_info #
+zstyle ':vcs_info:*' enable git # Gather information about git repos
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:*' unstagedstr '!'
 
 precmd() {
     vcs_info
 }
+zstyle ':vcs_info:git*' formats "%{$fg[blue]%}%b %{$fg[grey]%}[%{$fg[red]%}%u%c%{$fg[grey]%}]%{$reset_color%}"
+
 RPROMPT='${vcs_info_msg_0_}'
 
 # --------------------------------------------------------------------------------
