@@ -1,20 +1,19 @@
-install ack
-install ansible
-install homebrew/dupes/apple-gcc42
-install ctags
-install docker
-install docker-machine
-install erlang
-install git
-install neovim/neovim/neovim
-install nmap
-install packer
-install python
-install rbenv
-install rlwrap
-install stow
-install tmux
-install tree
-install vim
-install z
-install zsh
+ack
+ansible
+homebrew/dupes/apple-gcc42
+ctags
+docker-machine
+erlang
+fzf
+git
+neovim/neovim/neovim
+nmap
+packer
+python
+python3
+rbenv
+rlwrap
+tmux
+tree
+z
+zsh
