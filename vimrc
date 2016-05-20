@@ -8,6 +8,7 @@ Plug 'rodjek/vim-puppet'
 Plug 'kchmck/vim-coffee-script'
 Plug 'lrampa/vim-apib'
 Plug 'elzr/vim-json'
+Plug 'elixir-lang/vim-elixir'
 
 " Misc
 Plug 'junegunn/fzf' " fuzzy finder, brew install fzf to get working
