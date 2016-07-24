@@ -1,4 +1,5 @@
 let g:plugin_home="~/.vim/plugged"
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " https://github.com/chriskempson/base16-vim/issues/69
 call plug#begin(expand(g:plugin_home)) " Evaluating `nvim` so share plugins with VIM
 
 " Language Plugins

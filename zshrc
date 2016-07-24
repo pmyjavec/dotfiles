@@ -38,7 +38,7 @@ alias vim=nvim
 autoload colors && colors
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.base16-shell/base16-monokai.dark.sh"
+BASE16_SHELL="$HOME/.base16-shell/scripts/base16-harmonic16-light.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 PROMPT="%{$fg[grey]%}%~%{$fg[green]%} → %{$reset_color%}"
