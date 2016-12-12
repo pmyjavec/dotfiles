@@ -25,7 +25,7 @@ compinit
 bindkey '^k' history-substring-search-up    # vim style search
 bindkey '^j' history-substring-search-down  # vim style searching
 
-alias ls="ls -la"
+alias ls="ls -la --color"
 alias erl="rlwrap erl -oldshell"
 alias hi='history | tail -20'
 alias vi=nvim
@@ -41,7 +41,7 @@ autoload colors && colors
 BASE16_SHELL="$HOME/.base16-shell/scripts/base16-harmonic16-light.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
-PROMPT="%{$fg[grey]%}%~%{$fg[green]%} → %{$reset_color%}"
+PROMPT="%~%{$fg[green]%} → %{$reset_color%}"
 
 # Right handprompt settings
 autoload -Uz vcs_info #
@@ -62,11 +62,17 @@ RPROMPT='${vcs_info_msg_0_}' # Right hand prompt to show information from VCS
 # --------------------------------------------------------------------------------
 
 # Z easy directory nagivation
-test -f `brew --prefix`/etc/profile.d/z.sh && . `brew --prefix`/etc/profile.d/z.sh
+test -d "/usr/share/fzf" && source /usr/share/fzf/*.zsh
 
-eval $(ssh-agent -s > /dev/null) # Start SSH Agent
+test -x `which ssh-agent` && eval $(ssh-agent -s > /dev/null) # Start SSH Agent
 
-eval "$(rbenv init -)" # rbenv
+# base16 colors
+BASE16_SHELL=$HOME/.config/base16-shell/
+test -d $BASE16_SHELL || git clone https://github.com/chriskempson/base16-shell.git $BASE16_SHELL
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+base16_harmonic16-light
+
+#eval "$(rbenv init -)" # rbenv
 
 # Golang environment setup
 export GOPATH="$HOME/projects/go"
