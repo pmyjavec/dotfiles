@@ -22,11 +22,10 @@ compinit
 # Alias and Bindings
 # --------------------------------------------------------------------------------
 
-bindkey '^k' history-substring-search-up    # vim style search
-bindkey '^j' history-substring-search-down  # vim style searching
+bindkey '^k' history-beginning-search-backward
+bindkey '^j' history-beginning-search-forward # vim style searching
 
-alias ls="ls -la --color"
-alias erl="rlwrap erl -oldshell"
+alias ls="ls -l --color"
 alias hi='history | tail -20'
 alias vi=nvim
 alias vim=nvim
@@ -71,6 +70,9 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 test -d $BASE16_SHELL || git clone https://github.com/chriskempson/base16-shell.git $BASE16_SHELL
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 base16_harmonic16-light
+
+test -d $HOME/.zupa-z || git clone https://github.com/rupa/z/ $HOME/.zupa-z
+. $HOME/.zupa-z/z.sh
 
 #eval "$(rbenv init -)" # rbenv
 
