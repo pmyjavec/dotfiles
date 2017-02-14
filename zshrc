@@ -1,13 +1,16 @@
 # --------------------------------------------------------------------------------
 # ZSH Options
 # --------------------------------------------------------------------------------
-HISTFILE=~/.histfile                     # Where to save history
-HISTSIZE=1000                            # Length of history to keep in buffer
-SAVEHIST=1000                            # Length of history to save
-setopt appendhistory                     # Share history between sessions
-setopt autocd                            # Enter directory name to cd to that directory
-setopt prompt_subst                      # Re-evaluate, expand prompt on each command
-bindkey -v                               # Use VI key bindings
+export EDITOR='nvim'        # Set NeoVim as my default editor
+export PAGER="less -FirSwX" # Use less as the default pager
+export MANPAGER="$PAGER"    # Use default pager for reading man pages
+HISTFILE=~/.histfile        # Where to save history
+HISTSIZE=1000               # Length of history to keep in buffer
+SAVEHIST=1000               # Length of history to save
+setopt share_history        # Share history between sessions
+setopt autocd               # Enter directory name to cd to that directory
+setopt prompt_subst         # Re-evaluate, expand prompt on each command
+bindkey -v                  # Use VI key bindings
 
 # --------------------------------------------------------------------------------
 # Auto-completion settings
@@ -22,13 +25,19 @@ compinit
 # Alias and Bindings
 # --------------------------------------------------------------------------------
 
+# Allow editing of current command
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 bindkey '^k' history-beginning-search-backward
 bindkey '^j' history-beginning-search-forward # vim style searching
+
 
 alias ls="ls -l --color"
 alias hi='history | tail -20'
 alias vi=nvim
 alias vim=nvim
+alias sc="sudo systemctl"
 
 # --------------------------------------------------------------------------------
 # Color, prompt, themes
@@ -37,7 +46,7 @@ alias vim=nvim
 autoload colors && colors
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.base16-shell/scripts/base16-harmonic16-light.sh"
+BASE16_SHELL="$HOME/.base16-shell/scripts/base16-monokai.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 PROMPT="%~%{$fg[green]%} → %{$reset_color%}"
@@ -63,13 +72,13 @@ RPROMPT='${vcs_info_msg_0_}' # Right hand prompt to show information from VCS
 # Z easy directory nagivation
 test -d "/usr/share/fzf" && source /usr/share/fzf/*.zsh
 
-test -x `which ssh-agent` && eval $(ssh-agent -s > /dev/null) # Start SSH Agent
+#test -x `which ssh-agent` && eval $(ssh-agent -s > /dev/null) # Start SSH Agent
 
 # base16 colors
 BASE16_SHELL=$HOME/.config/base16-shell/
 test -d $BASE16_SHELL || git clone https://github.com/chriskempson/base16-shell.git $BASE16_SHELL
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-base16_harmonic16-light
+base16_monokai
 
 test -d $HOME/.zupa-z || git clone https://github.com/rupa/z/ $HOME/.zupa-z
 . $HOME/.zupa-z/z.sh
@@ -80,6 +89,3 @@ test -d $HOME/.zupa-z || git clone https://github.com/rupa/z/ $HOME/.zupa-z
 export GOPATH="$HOME/projects/go"
 export PATH=.bin:$PATH:$GOPATH/bin
 
-export EDITOR='nvim'         # Set NeoVim as my default editor
-export PAGER="less -FirSwX"  # Use less as the default pager
-export MANPAGER="$PAGER"     # Use default pager for reading man pages
