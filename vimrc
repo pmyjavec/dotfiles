@@ -7,17 +7,18 @@ Plug 'https://github.com/chase/vim-ansible-yaml.git'
 Plug 'fatih/vim-go'
 Plug 'rodjek/vim-puppet'
 Plug 'kchmck/vim-coffee-script'
-Plug 'lrampa/vim-apib'
 Plug 'elzr/vim-json'
 Plug 'elixir-lang/vim-elixir'
+Plug 'hashivim/vim-terraform'
 
 " Misc
-Plug 'junegunn/fzf' " fuzzy finder, brew install fzf to get working
-Plug 'Yggdroot/indentLine'    " Show indent guides
-Plug 'Shougo/deoplete.nvim'   " Automatically complete
-Plug 'tpope/vim-fugitive'     " Interact with Git from inside Vim
-Plug 'airblade/vim-gitgutter' " Show changes to files in the vim gutter
-Plug 'godlygeek/tabular'      " Makes lining up text easier
+Plug 'junegunn/fzf'                                           " fuzzy finder, brew install fzf to get working
+Plug 'Yggdroot/indentLine'                                    " Show indent guides
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Automatically complete
+Plug 'tpope/vim-fugitive'                                     " Interact with Git from inside Vim
+Plug 'tpope/vim-surround'                                     " Surround existing text, easily
+Plug 'airblade/vim-gitgutter'                                 " Show changes to files in the vim gutter
+Plug 'godlygeek/tabular'                                      " Makes lining up text easier
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
@@ -29,7 +30,8 @@ Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
-Plug 'chriskempson/base16-vim' "Themes from base16
+Plug 'chriskempson/base16-vim'                                " Themes from base16
+Plug 'benmills/vimux'
 
 " Extra configuration kept in my own Bundle
 Plug 'pmyjavec/vim-config'

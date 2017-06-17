@@ -5,8 +5,8 @@ export EDITOR='nvim'        # Set NeoVim as my default editor
 export PAGER="less -FirSwX" # Use less as the default pager
 export MANPAGER="$PAGER"    # Use default pager for reading man pages
 HISTFILE=~/.histfile        # Where to save history
-HISTSIZE=1000               # Length of history to keep in buffer
-SAVEHIST=1000               # Length of history to save
+HISTSIZE=5000               # Length of history to keep in buffer
+SAVEHIST=10000              # Length of history to save
 setopt share_history        # Share history between sessions
 setopt autocd               # Enter directory name to cd to that directory
 setopt prompt_subst         # Re-evaluate, expand prompt on each command
@@ -49,7 +49,7 @@ autoload colors && colors
 BASE16_SHELL="$HOME/.base16-shell/scripts/base16-monokai.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
-PROMPT="%~%{$fg[green]%} → %{$reset_color%}"
+PROMPT="%{$fg[blue]%}%~%{$fg[green]%} → %{$reset_color%}"
 
 # Right handprompt settings
 autoload -Uz vcs_info #
@@ -83,9 +83,8 @@ base16_monokai
 test -d $HOME/.zupa-z || git clone https://github.com/rupa/z/ $HOME/.zupa-z
 . $HOME/.zupa-z/z.sh
 
-#eval "$(rbenv init -)" # rbenv
+eval "$(rbenv init -)" # rbenv
 
 # Golang environment setup
 export GOPATH="$HOME/projects/go"
-export PATH=.bin:$PATH:$GOPATH/bin
-
+export PATH=.bin:$PATH:$GOPATH/bin:bin
