@@ -2,6 +2,7 @@
 [user]
 	name = Paul Myjavec
 	email = pauly@myjavec.com
+	signingkey = E4837292B7E400E4C5DFF6CBF326E81DA9651EB1
 [core]
 	excludesfile = ~/.gitignore
 [push]
@@ -11,3 +12,5 @@
 # Hack for Gopkgs to work
 [http "https://gopkg.in"]
     followRedirects = true
+[commit]
+	gpgsign = true

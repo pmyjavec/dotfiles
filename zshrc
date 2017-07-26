@@ -88,3 +88,11 @@ eval "$(rbenv init -)" # rbenv
 # Golang environment setup
 export GOPATH="$HOME/projects/go"
 export PATH=.bin:$PATH:$GOPATH/bin:bin
+
+# https://github.com/junegunn/fzf#respecting-gitignore-hgignore-and-svnignore
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
+export $(gnome-keyring-daemon -s)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
