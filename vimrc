@@ -10,6 +10,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'elzr/vim-json'
 Plug 'elixir-lang/vim-elixir'
 Plug 'hashivim/vim-terraform'
+Plug 'LnL7/vim-nix'
 
 " Misc
 Plug 'junegunn/fzf'                                           " fuzzy finder, brew install fzf to get working
@@ -28,10 +29,11 @@ Plug 'mhinz/vim-startify'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'Raimondi/delimitMate'
 Plug 'chriskempson/base16-vim'                                " Themes from base16
 Plug 'benmills/vimux'
+Plug 'juliosueiras/vim-terraform-completion'
 
 " Extra configuration kept in my own Bundle
 Plug 'pmyjavec/vim-config'

@@ -1,5 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
+
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
@@ -23,6 +24,9 @@
     }
   ];
 
+  # Automatic system upgrades
+  system.autoUpgrade.enable = true; 
+
   networking.hostName = "xps-13"; # Define your hostname.
   networking.networkmanager.enable = true;
   networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
@@ -38,13 +42,12 @@
 
    users.extraUsers.pmyjavec = {
    	createHome = true;
-	extraGroups = ["wheel" "video" "audio" "disk" "networkmanager"];
+	extraGroups = ["wheel" "video" "audio" "disk" "networkmanager" "docker"];
 	group = "users";
 	home = "/home/pmyjavec";
 	isNormalUser = true;
 	uid = 1000;
 	shell = pkgs.zsh;
-
    };
 
   # Set your time zone.
@@ -53,34 +56,56 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
    environment.systemPackages = with pkgs; [
+     nix-repl
+     
      curl
+     pamixer
+     playerctl
+     openssl
      wget 
-     neovim
-     terraform
-     ansible
      firefox
      nmap
-     ruby
-     python
      git
      htop
-     vagrant
      which
-     nix-repl
      kitty
-     tmux
      zsh
      tdesktop
      spotify
      slack
      pavucontrol
+     bc 
+     ipcalc
+     pciutils
+     update-resolv-conf
+     zip
+     gnupg
+     zoom-us
+
+     # Development
+     tmux
+     neovim
+     docker
+     
+     # Languages
+     ruby
+     python
+     python3
+
+     # DevOps and Operational Tooling
+     terraform
+     ansible
+     dnsutils
+     awscli
+     vagrant
+     google-cloud-sdk
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.bash.enableCompletion = true;
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.gnupg.agent = { enable = true; enableSSHSupport = false; };
 
   # List services that you want to enable:
 
@@ -94,7 +119,10 @@
   # networking.firewall.enable = false;
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true; 
+  services.printing.enable = true; 
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+
 
   # Enable sound.
   sound.enable = true;
@@ -111,10 +139,15 @@
   services.xserver.enable = true;
   services.xserver.layout = "us";
   services.xserver.dpi = 220;
-  # services.xserver.xkbOptions = "eurosign:e";
+  # services.xserver.xkbOptions = "eurosign:e"; 
+  
+  # Update firmwarre
+  services.fwupd.enable = true;
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
+  services.xserver.libinput.naturalScrolling = true;  
+  services.xserver.libinput.disableWhileTyping = true;
 
   # Enable the KDE Desktop Environment.
   #
@@ -145,4 +178,20 @@
     allowUnfree = true;
   };
 
+  services.openvpn.servers = {
+    production = { 
+    	config = '' config /root/production.ovpn ''; 
+	updateResolvConf = true;
+	autoStart = false;
+    };
+
+    non-production = { 
+    	config = '' config /root/non-production.ovpn ''; 
+	updateResolvConf = true;
+	autoStart = false;
+    };
+  };
+
+  programs.ssh.startAgent = true;
+  virtualisation.docker.enable = true;
 }

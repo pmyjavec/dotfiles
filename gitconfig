@@ -2,15 +2,11 @@
 [user]
 	name = Paul Myjavec
 	email = pauly@myjavec.com
-	signingkey = E4837292B7E400E4C5DFF6CBF326E81DA9651EB1
+    #signingkey = E4837292B7E400E4C5DFF6CBF326E81DA9651EB1
 [core]
 	excludesfile = ~/.gitignore
 [push]
 	default = simple
-[credential]
-	helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring
-# Hack for Gopkgs to work
-[http "https://gopkg.in"]
-    followRedirects = true
 [commit]
-	gpgsign = true
+    signingkey = FD95E2CCC75A835A
+    gpgsign = true
