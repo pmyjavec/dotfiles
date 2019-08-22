@@ -21,6 +21,10 @@ zstyle :compinstall filename '/Users/pmyjavec/.zshrc'
 autoload -Uz compinit
 compinit
 
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+fi
+
 # --------------------------------------------------------------------------------
 # Alias and Bindings
 # --------------------------------------------------------------------------------
@@ -33,7 +37,7 @@ bindkey '^k' history-beginning-search-backward
 bindkey '^j' history-beginning-search-forward # vim style searching
 
 
-alias ls="ls -l --color"
+alias ls="ls -l --color -a"
 alias hi='history | tail -20'
 alias vi=nvim
 alias vim=nvim
@@ -97,3 +101,7 @@ export $(gnome-keyring-daemon -s)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 export PATH="$HOME/.rbenv/bin:$PATH"
+
+alias xcopy='xclip -selection clipboard'
+alias xpaste='xclip -selection clipboard -o'
+alias grom="git pull -r origin master"

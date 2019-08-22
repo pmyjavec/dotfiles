@@ -45,7 +45,6 @@ call plug#end() " vim-plug
 " vim-misc stuff below loads the proper files.
 filetype plugin indent on
 
-
 " Load custom vimrc if it exists
 let g:vim_config_path = expand(plugin_home . "/vim-config/vimrc.vim")
 
