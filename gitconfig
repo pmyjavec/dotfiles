@@ -9,5 +9,6 @@
 	default = simple
 [commit]
     gpgsign = true
+    signingkey = FD95E2CCC75A835A
 [cola]
 	spellcheck = false

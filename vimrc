@@ -9,6 +9,7 @@ Plug 'rodjek/vim-puppet'
 Plug 'kchmck/vim-coffee-script'
 Plug 'elzr/vim-json'
 Plug 'elixir-lang/vim-elixir'
+Plug 'avdgaag/vim-phoenix'
 Plug 'hashivim/vim-terraform'
 Plug 'LnL7/vim-nix'
 

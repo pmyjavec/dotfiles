@@ -11,6 +11,7 @@ setopt share_history        # Share history between sessions
 setopt autocd               # Enter directory name to cd to that directory
 setopt prompt_subst         # Re-evaluate, expand prompt on each command
 bindkey -v                  # Use VI key bindings
+export TERM=xterm-color
 
 # --------------------------------------------------------------------------------
 # Auto-completion settings
@@ -21,8 +22,16 @@ zstyle :compinstall filename '/Users/pmyjavec/.zshrc'
 autoload -Uz compinit
 compinit
 
+# This works for NixOS
 if [ -n "${commands[fzf-share]}" ]; then
   source "$(fzf-share)/key-bindings.zsh"
+  #TODO: Nixos, add completions.
+fi
+
+# This does the same as above but works on Arch and probably other *nix
+if [ -f /usr/share/fzf/key-bindings.zsh ]; then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
 fi
 
 # --------------------------------------------------------------------------------
@@ -105,3 +114,4 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 alias xcopy='xclip -selection clipboard'
 alias xpaste='xclip -selection clipboard -o'
 alias grom="git pull -r origin master"
+
