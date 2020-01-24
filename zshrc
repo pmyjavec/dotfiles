@@ -46,11 +46,13 @@ bindkey '^k' history-beginning-search-backward
 bindkey '^j' history-beginning-search-forward # vim style searching
 
 
-alias ls="ls -l --color -a"
+alias ls="ls --color -l"
 alias hi='history | tail -20'
 alias vi=nvim
 alias vim=nvim
 alias sc="sudo systemctl"
+alias v=nvim
+alias g=git
 
 # --------------------------------------------------------------------------------
 # Color, prompt, themes
