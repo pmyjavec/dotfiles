@@ -11,7 +11,6 @@ setopt share_history        # Share history between sessions
 setopt autocd               # Enter directory name to cd to that directory
 setopt prompt_subst         # Re-evaluate, expand prompt on each command
 bindkey -v                  # Use VI key bindings
-export TERM=xterm-color
 
 # --------------------------------------------------------------------------------
 # Auto-completion settings
@@ -53,6 +52,7 @@ alias vim=nvim
 alias sc="sudo systemctl"
 alias v=nvim
 alias g=git
+alias gr=grep
 
 # --------------------------------------------------------------------------------
 # Color, prompt, themes

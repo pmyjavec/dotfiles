@@ -14,6 +14,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'LnL7/vim-nix'
 
 " Misc
+Plug 'ryanoasis/vim-devicons'                                           " Make vim pretty!
 Plug 'junegunn/fzf'                                           " fuzzy finder, brew install fzf to get working
 Plug 'Yggdroot/indentLine'                                    " Show indent guides
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Automatically complete
@@ -35,6 +36,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'chriskempson/base16-vim'                                " Themes from base16
 Plug 'benmills/vimux'
 Plug 'juliosueiras/vim-terraform-completion'
+Plug 'itspriddle/vim-shellcheck'
 
 " Extra configuration kept in my own Bundle
 Plug 'pmyjavec/vim-config'

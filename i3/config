@@ -13,7 +13,7 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Source Code Pro 8
+font pango:Source Code Pro 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,7 +30,7 @@ font pango:Source Code Pro 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec kitty -o font-family="Sauce Code Pro"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -128,6 +128,8 @@ assign [class="TelegramDesktop"] $workspace10
 assign [class="Slack"] $workspace09
 for_window [class="Spotify"] move to workspace $workspace10
 
+new_window 1pixel
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -177,14 +179,27 @@ bindsym XF86MonBrightnessUp exec light -A 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 20 # decrease screen brightness
 
 # Start
-bindsym F8 exec xrandr --output eDP1 --mode 3840x2160
+bindsym F8 exec xrandr --output eDP1 --mode 1920x1080 --dpi 190
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    tray_output none
+    tray_padding 0
+    height 20
+    font pango:DejaVu Sans Mono, FontAwesome 9
+    position top
+    status_command i3status-rs ~/.config/i3/status.toml
+    colors {
+      separator #666666
+      background #222222
+      statusline #dddddd
+      focused_workspace #0088CC #0088CC #ffffff
+      active_workspace #333333 #333333 #ffffff
+      inactive_workspace #333333 #333333 #888888
+      urgent_workspace #2f343a #900000 #ffffff
+    }
 }
-
 # Favourites
 exec kitty
 exec spotify
@@ -195,7 +210,6 @@ exec gnome-keyring-daemon -s -d -c secrets,ssh
 exec --no-startup-id redshift
 # Wallpaper
 exec_always feh --bg-scale ~/Pictures/wallpaper.jpg
-exec "xrandr --dpi 192"
 
 # Dual monitor configuration
 #exec --no-startup-id xrandr --output DP-1 --auto --output eDP-1 --auto --same-as DP-1
