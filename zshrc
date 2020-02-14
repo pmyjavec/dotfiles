@@ -116,4 +116,3 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 alias xcopy='xclip -selection clipboard'
 alias xpaste='xclip -selection clipboard -o'
 alias grom="git pull -r origin master"
-
