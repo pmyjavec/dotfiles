@@ -14,7 +14,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'LnL7/vim-nix'
 
 " Misc
-Plug 'ryanoasis/vim-devicons'                                           " Make vim pretty!
+Plug 'ryanoasis/vim-devicons'                                 " Make vim pretty!
 Plug 'junegunn/fzf'                                           " fuzzy finder, brew install fzf to get working
 Plug 'Yggdroot/indentLine'                                    " Show indent guides
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Automatically complete
@@ -22,6 +22,7 @@ Plug 'tpope/vim-fugitive'                                     " Interact with Gi
 Plug 'tpope/vim-surround'                                     " Surround existing text, easily
 Plug 'airblade/vim-gitgutter'                                 " Show changes to files in the vim gutter
 Plug 'godlygeek/tabular'                                      " Makes lining up text easier
+Plug 'plasticboy/vim-markdown'                                " This plugin must be set after godlygeek/tabular
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
