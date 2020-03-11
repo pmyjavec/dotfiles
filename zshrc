@@ -98,8 +98,6 @@ base16_monokai
 test -d $HOME/.zupa-z || git clone https://github.com/rupa/z/ $HOME/.zupa-z
 . $HOME/.zupa-z/z.sh
 
-eval "$(rbenv init -)" # rbenv
-
 # Golang environment setup
 export GOPATH="$HOME/projects/go"
 export PATH=.bin:$PATH:$GOPATH/bin:bin
@@ -116,3 +114,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 alias xcopy='xclip -selection clipboard'
 alias xpaste='xclip -selection clipboard -o'
 alias grom="git pull -r origin master"
+
+eval "$(direnv hook zsh)"
+
+. $HOME/.asdf/asdf.sh

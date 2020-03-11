@@ -5,24 +5,23 @@ call plug#begin(expand(g:plugin_home)) " Evaluating `nvim` so share plugins with
 " Language Plugins
 Plug 'https://github.com/chase/vim-ansible-yaml.git'
 Plug 'fatih/vim-go'
-Plug 'rodjek/vim-puppet'
-Plug 'kchmck/vim-coffee-script'
 Plug 'elzr/vim-json'
 Plug 'elixir-lang/vim-elixir'
 Plug 'avdgaag/vim-phoenix'
 Plug 'hashivim/vim-terraform'
 Plug 'LnL7/vim-nix'
-
+Plug 'psf/black'
 " Misc
+Plug 'editorconfig/editorconfig-vim'                          " Consistent configuration per project.
 Plug 'ryanoasis/vim-devicons'                                 " Make vim pretty!
-Plug 'junegunn/fzf'                                           " fuzzy finder, brew install fzf to get working
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'                                    " Show indent guides
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Automatically complete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'tag': '5.2' } " Automatically complete
 Plug 'tpope/vim-fugitive'                                     " Interact with Git from inside Vim
 Plug 'tpope/vim-surround'                                     " Surround existing text, easily
 Plug 'airblade/vim-gitgutter'                                 " Show changes to files in the vim gutter
 Plug 'godlygeek/tabular'                                      " Makes lining up text easier
-Plug 'plasticboy/vim-markdown'                                " This plugin must be set after godlygeek/tabular
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
