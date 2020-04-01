@@ -1,9 +1,0 @@
---ignore-dir=.gems
---ignore-dir=coverage_report
---ignore-dir=.bin
---ignore-dir=vendor
---ignore-dir=coverage_report
---ignore-dir=.bundle
---ignore-dir=_site
---ignore-file=match:svg
--type-set=puppet=.pp

@@ -11,17 +11,18 @@ Plug 'avdgaag/vim-phoenix'
 Plug 'hashivim/vim-terraform'
 Plug 'LnL7/vim-nix'
 Plug 'psf/black'
+
 " Misc
-Plug 'editorconfig/editorconfig-vim'                          " Consistent configuration per project.
-Plug 'ryanoasis/vim-devicons'                                 " Make vim pretty!
+Plug 'editorconfig/editorconfig-vim'                                        " Consistent configuration per project.
+Plug 'ryanoasis/vim-devicons'                                               " Make vim pretty!
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/indentLine'                                    " Show indent guides
+Plug 'Yggdroot/indentLine'                                                  " Show indent guides
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'tag': '5.2' } " Automatically complete
-Plug 'tpope/vim-fugitive'                                     " Interact with Git from inside Vim
-Plug 'tpope/vim-surround'                                     " Surround existing text, easily
-Plug 'airblade/vim-gitgutter'                                 " Show changes to files in the vim gutter
-Plug 'godlygeek/tabular'                                      " Makes lining up text easier
+Plug 'tpope/vim-fugitive'                                                   " Interact with Git from inside Vim
+Plug 'tpope/vim-surround'                                                   " Surround existing text, easily
+Plug 'airblade/vim-gitgutter'                                               " Show changes to files in the vim gutter
+Plug 'godlygeek/tabular'                                                    " Makes lining up text easier
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
@@ -33,10 +34,12 @@ Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-syntastic/syntastic'
 Plug 'Raimondi/delimitMate'
-Plug 'chriskempson/base16-vim'                                " Themes from base16
+Plug 'chriskempson/base16-vim'                                              " Themes from base16
 Plug 'benmills/vimux'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'itspriddle/vim-shellcheck'
+Plug 'janko/vim-test'                                                       " Execute tests from vim
+Plug 'iCyMind/NeoSolarized'
 
 " Extra configuration kept in my own Bundle
 Plug 'pmyjavec/vim-config'

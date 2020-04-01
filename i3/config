@@ -6,19 +6,6 @@ set $mod Mod1
 # is used in the bar {} block below.
 font pango:Source Code Pro 10
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-#
-
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -173,6 +160,13 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec light -A 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 20 # decrease screen brightness
 
+# Move windows between windows.
+bindsym $mod+Shift+greater move container to output right
+bindsym $mod+Shift+less move container to output left
+
+# Screenshot Helper - scrot
+bindsym Print --release exec "scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+
 # Start
 bindsym F8 exec xrandr --output eDP1 --mode 1920x1080 --dpi 190
 
@@ -200,6 +194,10 @@ exec slack
 exec telegram-desktop
 exec gnome-keyring-daemon -s -d -c secrets,ssh
 exec --no-startup-id redshift
+
+
+exec i3 --force-xinerama -V >>~/.i3/i3log 2>&1
+
 # Wallpaper
 exec_always feh --bg-scale ~/Photos/wallpaper.jpg
 
