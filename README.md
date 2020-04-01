@@ -1,4 +1,4 @@
-# Paul Myjavec's "Dot Files"
+# Dot Files
 
 ## Installation
 
