@@ -23,6 +23,8 @@ Plug 'tpope/vim-fugitive'                                                   " In
 Plug 'tpope/vim-surround'                                                   " Surround existing text, easily
 Plug 'airblade/vim-gitgutter'                                               " Show changes to files in the vim gutter
 Plug 'godlygeek/tabular'                                                    " Makes lining up text easier
+Plug 'kamykn/spelunker.vim'                                                 " Nicer spell checking
+Plug 'kamykn/popup-menu.nvim'                                               " Required for spelunker
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'

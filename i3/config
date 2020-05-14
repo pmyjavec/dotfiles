@@ -161,8 +161,8 @@ bindsym XF86MonBrightnessUp exec light -A 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 20 # decrease screen brightness
 
 # Move windows between windows.
-bindsym $mod+Shift+greater move container to output right
-bindsym $mod+Shift+less move container to output left
+bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+less move workspace to output left
 
 # Screenshot Helper - scrot
 bindsym Print --release exec "scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
@@ -173,7 +173,9 @@ bindsym F8 exec xrandr --output eDP1 --mode 1920x1080 --dpi 190
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    font pango:DejaVu Sans Mono, FontAwesome 10
+    tray_output primary
+    tray_output DP-1
+    font pango:DejaVu Sans Mono, FontAwesome 8
     position top
     status_command i3status-rs ~/.config/i3/status.toml
      colors {
@@ -184,8 +186,9 @@ bar {
         active_workspace #fdf6e3 #6c71c4 #fdf6e3
         inactive_workspace #586e75 #93a1a1 #002b36
         urgent_workspace #d33682 #d33682 #fdf6e3
-    }
+     }
 }
+
 # Favourites
 exec kitty
 exec spotify
@@ -194,6 +197,7 @@ exec slack
 exec telegram-desktop
 exec gnome-keyring-daemon -s -d -c secrets,ssh
 exec --no-startup-id redshift
+exec pasystray
 
 
 exec i3 --force-xinerama -V >>~/.i3/i3log 2>&1
@@ -202,4 +206,3 @@ exec i3 --force-xinerama -V >>~/.i3/i3log 2>&1
 exec_always feh --bg-scale ~/Photos/wallpaper.jpg
 
 # Dual monitor configuration
-#exec --no-startup-id xrandr --output DP-1 --auto --output eDP-1 --auto --same-as DP-1

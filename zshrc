@@ -1,4 +1,3 @@
-source /etc/zshrc
 # --------------------------------------------------------------------------------
 # ZSH Options
 # --------------------------------------------------------------------------------
@@ -45,9 +44,17 @@ export GOPATH="$HOME/projects/go"
 export PATH=$PATH:$GOPATH/bin
 
 # https://github.com/junegunn/fzf#respecting-gitignore-hgignore-and-svnignore
+export FZF_BASE="${HOME}/.nix-profile/share/fzf"
 export FZF_DEFAULT_COMMAND='ag -g ""'
+export AWS_SDK_LOAD_CONFIG=true
 
-export $(gnome-keyring-daemon -s)
+# aws-vault Config
+export AWS_VAULT_BACKEND=pass
+export AWS_VAULT_PROMPT=ykman
+export AWS_VAULT_PASS_CMD=gopass
+export AWS_VAULT_PASS_PREFIX=aws-vault
+
+#export $(gnome-keyring-daemon -s)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
@@ -55,3 +62,9 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(direnv hook zsh)"
 
 . $HOME/.asdf/asdf.sh
+
+for role in $( aws-vault list --profiles ); do
+  eval "${role}() { export AWS_PROFILE=${role}; }"
+done
+
+#source /etc/zshrc

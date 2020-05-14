@@ -25,7 +25,7 @@
   ];
 
   # Automatic system upgrades
-  system.autoUpgrade.enable = true; 
+  system.autoUpgrade.enable = true;
 
   networking.hostName = "xps-13"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -57,12 +57,12 @@
   # $ nix search wget
    environment.systemPackages = with pkgs; [
      nix-repl
-     
+
      curl
      pamixer
      playerctl
      openssl
-     wget 
+     wget
      firefox
      nmap
      git
@@ -74,7 +74,7 @@
      spotify
      slack
      pavucontrol
-     bc 
+     bc
      ipcalc
      pciutils
      update-resolv-conf
@@ -86,7 +86,7 @@
      tmux
      neovim
      docker
-     
+
      # Languages
      ruby
      python
@@ -119,7 +119,7 @@
   # networking.firewall.enable = false;
 
   # Enable CUPS to print documents.
-  services.printing.enable = true; 
+  services.printing.enable = true;
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
 
@@ -138,15 +138,15 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "us";
-  services.xserver.dpi = 220;
-  # services.xserver.xkbOptions = "eurosign:e"; 
-  
+  services.xserver.dpi = 240;
+  # services.xserver.xkbOptions = "eurosign:e";
+
   # Update firmwarre
   services.fwupd.enable = true;
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
-  services.xserver.libinput.naturalScrolling = true;  
+  services.xserver.libinput.naturalScrolling = true;
   services.xserver.libinput.disableWhileTyping = true;
 
   # Enable the KDE Desktop Environment.
@@ -160,7 +160,7 @@
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "18.03"; 
+  system.stateVersion = "18.03";
 
   fonts.fonts = with pkgs; [
     source-code-pro
@@ -172,21 +172,21 @@
   services.redshift = {
     enable = true;
     provider = "geoclue2";
-  }; 
+  };
 
   nixpkgs.config = {
     allowUnfree = true;
   };
 
   services.openvpn.servers = {
-    production = { 
-    	config = '' config /root/production.ovpn ''; 
+    production = {
+    	config = '' config /root/production.ovpn '';
 	updateResolvConf = true;
 	autoStart = false;
     };
 
-    non-production = { 
-    	config = '' config /root/non-production.ovpn ''; 
+    non-production = {
+    	config = '' config /root/non-production.ovpn '';
 	updateResolvConf = true;
 	autoStart = false;
     };

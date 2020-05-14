@@ -22,3 +22,6 @@
 # automatically launch merge tool without displaying a prompt
 [mergetool]
   prompt = false
+
+[url "git@github.com:LF-Certification"]
+  insteadOf = https://github.com/LF-Certification

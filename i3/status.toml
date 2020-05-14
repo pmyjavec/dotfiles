@@ -14,9 +14,9 @@ format = "{percentage}% {time}"
 [[block]]
 block = "net"
 device = "wlp82s0"
-ssid = true
+ssid = false
 signal_strength = true
-ip = true
+ip = false
 speed_up = false
 graph_up = false
 interval = 5
@@ -45,7 +45,9 @@ interval = 1
 format = "{1m}"
 
 [[block]]
-block = "sound"
+driver = "pulseaudio"
+on_click = "exec 'pavucontrol'"
+show_volume_when_muted = true
 
 [[block]]
 block = "time"
