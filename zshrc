@@ -29,7 +29,6 @@ alias vi=nvim
 alias vim=nvim
 alias sc="sudo systemctl"
 alias v=nvim
-alias g=git
 alias gr=grep
 alias xcopy='xclip -selection clipboard'
 alias xpaste='xclip -selection clipboard -o'
@@ -42,6 +41,7 @@ alias grom="git pull -r origin master"
 # Golang environment setup
 export GOPATH="$HOME/projects/go"
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/bin
 
 # https://github.com/junegunn/fzf#respecting-gitignore-hgignore-and-svnignore
 export FZF_BASE="${HOME}/.nix-profile/share/fzf"
@@ -61,10 +61,11 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(direnv hook zsh)"
 
-. $HOME/.asdf/asdf.sh
-
 for role in $( aws-vault list --profiles ); do
   eval "${role}() { export AWS_PROFILE=${role}; }"
 done
 
 #source /etc/zshrc
+
+. $HOME/.asdf/asdf.sh
+
