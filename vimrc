@@ -18,9 +18,10 @@ Plug 'ryanoasis/vim-devicons'                                               " Ma
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'                                                  " Show indent guides
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'tag': '5.2' } " Automatically complete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'tag': '6.0' } " Automatically complete
 Plug 'tpope/vim-fugitive'                                                   " Interact with Git from inside Vim
 Plug 'tpope/vim-surround'                                                   " Surround existing text, easily
+Plug 'tpope/vim-rhubarb'                                                    " Open GH links
 Plug 'airblade/vim-gitgutter'                                               " Show changes to files in the vim gutter
 Plug 'godlygeek/tabular'                                                    " Makes lining up text easier
 Plug 'kamykn/spelunker.vim'                                                 " Nicer spell checking
@@ -43,6 +44,7 @@ Plug 'itspriddle/vim-shellcheck'
 Plug 'janko/vim-test'                                                       " Execute tests from vim
 Plug 'iCyMind/NeoSolarized'
 Plug 'tpope/vim-commentary'                                                 " Vim-commentary
+Plug 'jvirtanen/vim-hcl'
 
 " Extra configuration kept in my own Bundle
 Plug 'pmyjavec/vim-ftplugins'
@@ -168,6 +170,8 @@ nmap <silent> t<C-g> :TestVisit<CR>
 " Plugin Settings
 "=============================================================================
 
+let g:python3_host_prog = '/home/pmyjavec/.pyenv/versions/neovim3/bin/python3'
+
 " NERDTree
  let NERDTreeIgnore=['\.pyc$', '\.gem$', '\.out', '\~$', '_site', '\.beam$', '__pycache__']
 
@@ -179,9 +183,9 @@ let g:deoplete#enable_at_startup = 1 " Start
 
 " base16 themes
 set termguicolors
+set background=dark
 colorscheme NeoSolarized
 let g:neosolarized_contrast = "normal"
-set background=dark
 
 " airline
 let g:airline_powerline_fonts = 1
