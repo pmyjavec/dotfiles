@@ -3,7 +3,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " https://github.com/chriskempson/base16-vim/i
 call plug#begin(expand(g:plugin_home)) " Evaluating `nvim` so share plugins with VIM
 
 " Language Plugins
-Plug 'https://github.com/chase/vim-ansible-yaml.git'
+Plug 'pearofducks/ansible-vim'
 Plug 'fatih/vim-go'
 Plug 'elzr/vim-json'
 Plug 'elixir-lang/vim-elixir'
@@ -53,7 +53,8 @@ call plug#end() " vim-plug
 
 " Turn on filetype plugin and indent loading so that loading the
 " vim-misc stuff below loads the proper files.
-filetype plugin indent on
+filetype plugin on
+filetype plugin indent off
 
 " Load custom vimrc if it exists
 let g:vim_config_path = expand(plugin_home . "/vim-config/vimrc.vim")
@@ -100,6 +101,8 @@ set smartcase  " Be smart about case sensitivity when searching
 " Auto Commands
 "=============================================================================
 autocmd BufWritePre * :%s/\s\+$//e  "Remove trailing whitespaces
+
+au BufRead,BufNewFile */ansible/*.yaml set filetype=yaml.ansible softtabstop=2 tabstop=2
 
 "=============================================================================
 " Key Bindings
@@ -171,6 +174,8 @@ nmap <silent> t<C-g> :TestVisit<CR>
 "=============================================================================
 
 let g:python3_host_prog = '/home/pmyjavec/.pyenv/versions/neovim3/bin/python3'
+let g:python_host_prog = '/home/pmyjavec/.pyenv/versions/neovim3/bin/python3'
+let $PATH.=':/home/pmyjavec/.pyenv/versions/neovim3/bin/'
 
 " NERDTree
  let NERDTreeIgnore=['\.pyc$', '\.gem$', '\.out', '\~$', '_site', '\.beam$', '__pycache__']
@@ -178,7 +183,7 @@ let g:python3_host_prog = '/home/pmyjavec/.pyenv/versions/neovim3/bin/python3'
 " UltiSnips Configuration
 let g:UltiSnipsExpandTrigger="<C-j>"
 
-" Shougo/deoplete.nvim
+" " Shougo/deoplete.nvim
 let g:deoplete#enable_at_startup = 1 " Start
 
 " base16 themes
@@ -204,6 +209,9 @@ let g:vim_markdown_folding_disabled = 1
 
 " Syntastic
 let g:syntastic_python_checkers = ['pylint']
+
+" ansible
+let g:ansible_unindent_after_newline = 0
 
 " Vim Gutter
 let signcolumn="yes:3"
