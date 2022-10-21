@@ -1,6 +1,6 @@
-let g:plugin_home="~/.vim/plugged"
+" let g:plugin_home="~/.vim/plugged"
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " https://github.com/chriskempson/base16-vim/issues/69
-call plug#begin(expand(g:plugin_home)) " Evaluating `nvim` so share plugins with VIM
+call plug#begin() " Evaluating `nvim` so share plugins with VIM
 
 " Adapted from https://github.com/hrsh7th/nvim-cmp
 " Setup LSP servers and auto-completion
@@ -17,6 +17,12 @@ Plug 'hrsh7th/nvim-cmp'
 " For vsnip users.
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+
+Plug 'kyazdani42/nvim-web-devicons'
+
+" Telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
 " Misc
 Plug 'psf/black'
@@ -39,24 +45,27 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'MunifTanjim/nui.nvim'
 
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'Raimondi/delimitMate'
 Plug 'chriskempson/base16-vim'                                              " Themes from base16
 Plug 'benmills/vimux'
-Plug 'juliosueiras/vim-terraform-completion'
-Plug 'itspriddle/vim-shellcheck'
 Plug 'janko/vim-test'                                                       " Execute tests from vim
-Plug 'iCyMind/NeoSolarized'
+
+" Solarized
+Plug 'tjdevries/colorbuddy.nvim' " Required for svrana/neosolarized.nvim
+Plug 'svrana/neosolarized.nvim'
+
 Plug 'tpope/vim-commentary'                                                 " Vim-commentary
 call plug#end() " vim-plug
 
 set completeopt=menu,menuone,noselect
 
 lua <<EOF
+  require('neosolarized').setup({
+    comment_italics = true,
+  })
 
   local cmp = require'cmp'
   cmp.setup({
@@ -137,13 +146,6 @@ EOF
 " vim-misc stuff below loads the proper files.
 filetype plugin on
 filetype plugin indent on
-
-" Load custom vimrc if it exists
-let g:vim_config_path = expand(plugin_home . "/vim-config/vimrc.vim")
-
-if filereadable(g:vim_config_path)
-    execute "source " . g:vim_config_path
-endif
 
 
 ":=============================================================================
@@ -253,6 +255,12 @@ nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
 
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 "=============================================================================
 " Plugin Settings
 "=============================================================================
@@ -268,8 +276,6 @@ let $PATH.=':/home/pmyjavec/.pyenv/versions/neovim3/bin/'
 " base16 themes
 set termguicolors
 set background=dark
-colorscheme NeoSolarized
-let g:neosolarized_contrast = "normal"
 
 " airline
 let g:airline_powerline_fonts = 1
