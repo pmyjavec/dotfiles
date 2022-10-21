@@ -4,7 +4,7 @@ call plug#begin(expand(g:plugin_home)) " Evaluating `nvim` so share plugins with
 
 " Language Plugins
 Plug 'pearofducks/ansible-vim'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'elzr/vim-json'
 Plug 'elixir-lang/vim-elixir'
 Plug 'avdgaag/vim-phoenix'
@@ -51,10 +51,14 @@ Plug 'pmyjavec/vim-ftplugins'
 
 call plug#end() " vim-plug
 
+call deoplete#custom#option('omni_patterns', {
+\ 'go': '[^. *\t]\.\w*',
+\})
+
 " Turn on filetype plugin and indent loading so that loading the
 " vim-misc stuff below loads the proper files.
 filetype plugin on
-filetype plugin indent off
+filetype plugin indent on
 
 " Load custom vimrc if it exists
 let g:vim_config_path = expand(plugin_home . "/vim-config/vimrc.vim")
@@ -209,6 +213,8 @@ let g:vim_markdown_folding_disabled = 1
 
 " Syntastic
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_ansible_ansible_lint_exec = '/home/pmyjavec/.pyenv/bin/ansible_lint'
+let g:syntastic_ansible_checkers = ['ansible_lint']
 
 " ansible
 let g:ansible_unindent_after_newline = 0

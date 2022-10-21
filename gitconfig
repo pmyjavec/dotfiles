@@ -23,5 +23,5 @@
 [mergetool]
   prompt = false
 
-[url "git@github.com:LF-Certification"]
-  insteadOf = https://github.com/LF-Certification
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
