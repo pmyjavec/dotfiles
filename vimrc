@@ -2,23 +2,29 @@ let g:plugin_home="~/.vim/plugged"
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " https://github.com/chriskempson/base16-vim/issues/69
 call plug#begin(expand(g:plugin_home)) " Evaluating `nvim` so share plugins with VIM
 
-" Language Plugins
-Plug 'pearofducks/ansible-vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'elzr/vim-json'
-Plug 'elixir-lang/vim-elixir'
-Plug 'avdgaag/vim-phoenix'
-Plug 'hashivim/vim-terraform'
-Plug 'LnL7/vim-nix'
-Plug 'psf/black'
+" Adapted from https://github.com/hrsh7th/nvim-cmp
+" Setup LSP servers and auto-completion
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 
 " Misc
+Plug 'psf/black'
 Plug 'editorconfig/editorconfig-vim'                                        " Consistent configuration per project.
 Plug 'ryanoasis/vim-devicons'                                               " Make vim pretty!
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'                                                  " Show indent guides
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'tag': '6.0' } " Automatically complete
 Plug 'tpope/vim-fugitive'                                                   " Interact with Git from inside Vim
 Plug 'tpope/vim-surround'                                                   " Surround existing text, easily
 Plug 'tpope/vim-rhubarb'                                                    " Open GH links
@@ -32,10 +38,12 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-syntastic/syntastic'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'MunifTanjim/nui.nvim'
+
+Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'Raimondi/delimitMate'
 Plug 'chriskempson/base16-vim'                                              " Themes from base16
 Plug 'benmills/vimux'
@@ -44,16 +52,86 @@ Plug 'itspriddle/vim-shellcheck'
 Plug 'janko/vim-test'                                                       " Execute tests from vim
 Plug 'iCyMind/NeoSolarized'
 Plug 'tpope/vim-commentary'                                                 " Vim-commentary
-Plug 'jvirtanen/vim-hcl'
-
-" Extra configuration kept in my own Bundle
-Plug 'pmyjavec/vim-ftplugins'
-
 call plug#end() " vim-plug
 
-call deoplete#custom#option('omni_patterns', {
-\ 'go': '[^. *\t]\.\w*',
-\})
+set completeopt=menu,menuone,noselect
+
+lua <<EOF
+
+  local cmp = require'cmp'
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+
+  require("mason").setup()
+  require("mason-lspconfig").setup()
+  require("mason-lspconfig").setup_handlers {
+      -- The first entry (without a key) will be the default handler
+      -- and will be called for each installed server that doesn't have
+      -- a dedicated handler.
+      function (server_name) -- default handler (optional)
+          require("lspconfig")[server_name].setup {}
+      end,
+      -- Next, you can provide targeted overrides for specific servers.
+      -- For example, a handler override for the `rust_analyzer`:
+      ["rust_analyzer"] = function ()
+          require("rust-tools").setup {}
+      end
+  }
+EOF
 
 " Turn on filetype plugin and indent loading so that loading the
 " vim-misc stuff below loads the proper files.
@@ -66,6 +144,7 @@ let g:vim_config_path = expand(plugin_home . "/vim-config/vimrc.vim")
 if filereadable(g:vim_config_path)
     execute "source " . g:vim_config_path
 endif
+
 
 ":=============================================================================
 " Misc options
@@ -86,6 +165,7 @@ if !has('nvim') " Defaults which nvim already has
     set laststatus=2                              " Show the status bar for all windows
     set listchars=tab:>.,trail:.,extends:#,nbsp:. " Show traiing whitepace etc
 endif
+
 
 " Disable Mouse Support
 set mouse=
@@ -138,9 +218,9 @@ nmap <leader><leader>j <Plug>(easymotion-overwin-line)
 nmap <leader><leader>k <Plug>(easymotion-overwin-line)
 
 map <Leader>t :FZF <CR>
-map <Leader>n :NERDTreeToggle<CR>
-map <Leader>m :NERDTreeFocus<CR>
-map <Leader>u :IndentGuidesToggle<CR>
+map <Leader>n :NeoTreeShowToggle<CR>
+map <Leader>m :NeoTreeFocus<CR>
+map <Leader>i :IndentLinesToggle<CR>
 map <Leader>s :write<CR>
 map <Leader>q :wq<CR>
 map <Leader>! :qall<CR>
@@ -184,11 +264,6 @@ let $PATH.=':/home/pmyjavec/.pyenv/versions/neovim3/bin/'
 " NERDTree
  let NERDTreeIgnore=['\.pyc$', '\.gem$', '\.out', '\~$', '_site', '\.beam$', '__pycache__']
 
-" UltiSnips Configuration
-let g:UltiSnipsExpandTrigger="<C-j>"
-
-" " Shougo/deoplete.nvim
-let g:deoplete#enable_at_startup = 1 " Start
 
 " base16 themes
 set termguicolors
@@ -201,9 +276,6 @@ let g:airline_powerline_fonts = 1
 
 " FZF + Silver Searcher
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
-" vim-terraform
-let g:terraform_fmt_on_save = 1
 
 " Black
 autocmd BufWritePre *.py execute ':Black'
