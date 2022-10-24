@@ -28,8 +28,6 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'psf/black'
 Plug 'editorconfig/editorconfig-vim'                                        " Consistent configuration per project.
 Plug 'ryanoasis/vim-devicons'                                               " Make vim pretty!
-Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'                                                  " Show indent guides
 Plug 'tpope/vim-fugitive'                                                   " Interact with Git from inside Vim
 Plug 'tpope/vim-surround'                                                   " Surround existing text, easily
@@ -173,11 +171,12 @@ endif
 set mouse=
 
 " Tab settings
-set expandtab       " Insert the right number of spaces
-set tabstop=4       " Display n spaces for each tab
-set softtabstop=4   " Display n spaces for each softtab
-set shiftwidth=4    " Amount of spaces when re-indenting
-set colorcolumn=80  " Highlight long lines
+set expandtab      " Insert the right number of spaces
+set tabstop=4      " Display n spaces for each tab
+set softtabstop=4  " Display n spaces for each softtab
+set shiftwidth=4   " Amount of spaces when re-indenting
+set colorcolumn=80 " Highlight long lines
+set nospell        " Turn off as it conflicts with https://github.com/kamykn/spelunker.vim
 
 " Search  settings
 set ignorecase " Ignore casing of searches
@@ -219,7 +218,6 @@ nmap <leader>w <Plug>(easymotion-bd-w)
 nmap <leader><leader>j <Plug>(easymotion-overwin-line)
 nmap <leader><leader>k <Plug>(easymotion-overwin-line)
 
-map <Leader>t :FZF <CR>
 map <Leader>n :NeoTreeShowToggle<CR>
 map <Leader>m :NeoTreeFocus<CR>
 map <Leader>i :IndentLinesToggle<CR>
@@ -238,22 +236,23 @@ map <Leader>vq :VimuxCloseRunner<CR>
 map <Leader>vx :VimuxInterruptRunner<CR>
 map <Leader>vz :call VimuxZoomRunner()<CR>
 
-" Moving between splits easier
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
 " Fugitive
 map <Leader>gw :Gwrite<CR>
 
-" Fugitive
 map <Leader>f :Black<CR>
 
 " vim-test
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
+map <Leader>tn :TestNearest<CR>
+map <Leader>tf :TestFile<CR>
+map <Leader>ts :TestSuite<CR>
+map <Leader>tl :TestLast<CR>
+map <Leader>tv :TestVisit<CR>
+
+" Make navigating panes easier.
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -261,13 +260,14 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+
 "=============================================================================
 " Plugin Settings
 "=============================================================================
 
-let g:python3_host_prog = '/home/pmyjavec/.pyenv/versions/neovim3/bin/python3'
-let g:python_host_prog = '/home/pmyjavec/.pyenv/versions/neovim3/bin/python3'
-let $PATH.=':/home/pmyjavec/.pyenv/versions/neovim3/bin/'
+let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python3'
+let g:python_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python3'
+let $PATH.= ':/home/pmyjavec/.pyenv/versions/neovim3/bin/'
 
 " NERDTree
  let NERDTreeIgnore=['\.pyc$', '\.gem$', '\.out', '\~$', '_site', '\.beam$', '__pycache__']
@@ -279,12 +279,6 @@ set background=dark
 
 " airline
 let g:airline_powerline_fonts = 1
-
-" FZF + Silver Searcher
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
-" Black
-autocmd BufWritePre *.py execute ':Black'
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
