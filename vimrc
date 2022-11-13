@@ -1,4 +1,3 @@
-" let g:plugin_home="~/.vim/plugged"
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " https://github.com/chriskempson/base16-vim/issues/69
 call plug#begin() " Evaluating `nvim` so share plugins with VIM
 
@@ -8,15 +7,15 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-
-" For vsnip users.
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
 
 Plug 'kyazdani42/nvim-web-devicons'
 
@@ -39,56 +38,77 @@ Plug 'kamykn/popup-menu.nvim'                                               " Re
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
 
 Plug 'MunifTanjim/nui.nvim'
 
 Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'Raimondi/delimitMate'
-Plug 'chriskempson/base16-vim'                                              " Themes from base16
 Plug 'benmills/vimux'
 Plug 'janko/vim-test'                                                       " Execute tests from vim
 
-" Solarized
-Plug 'tjdevries/colorbuddy.nvim' " Required for svrana/neosolarized.nvim
-Plug 'svrana/neosolarized.nvim'
+Plug 'ellisonleao/gruvbox.nvim'
+
+Plug 'nvim-lualine/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'tpope/vim-commentary'                                                 " Vim-commentary
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end() " vim-plug
 
 set completeopt=menu,menuone,noselect
 
+set background=light" or light if you want light mode
+colorscheme gruvbox
+
+
 lua <<EOF
-  require('neosolarized').setup({
-    comment_italics = true,
-  })
+  require('lualine').setup()
+
+  local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
   local cmp = require'cmp'
+
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        vim.fn["UltiSnips#Anon"](args.body)
       end,
     },
     window = {
       -- completion = cmp.config.window.bordered(),
       -- documentation = cmp.config.window.bordered(),
     },
+
     mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ["<Tab>"] = cmp.mapping(
+         function(fallback)
+           cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+         end,
+         { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
+       ),
+       ["<S-Tab>"] = cmp.mapping(
+         function(fallback)
+           cmp_ultisnips_mappings.jump_backwards(fallback)
+         end,
+         { "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
+       ),
+
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
+      { name = 'ultisnips' },
       -- { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = 'buffer' },
@@ -122,6 +142,12 @@ lua <<EOF
     })
   })
 
+  -- Set up lspconfig.
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  require('lspconfig')['gopls'].setup {
+    capabilities = capabilities
+  }
 
   require("mason").setup()
   require("mason-lspconfig").setup()
@@ -275,10 +301,7 @@ let $PATH.= ':/home/pmyjavec/.pyenv/versions/neovim3/bin/'
 
 " base16 themes
 set termguicolors
-set background=dark
-
-" airline
-let g:airline_powerline_fonts = 1
+set background=light
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
@@ -304,7 +327,6 @@ set smartcase
 " Display & theme settings
 "=============================================================================
 
-"set t_Co=256               " Use 256 colors
 set visualbell             " Flash screen on notifications
 set scrolloff=999          " Centered cursor
 set ruler                  " Show the line numbers
