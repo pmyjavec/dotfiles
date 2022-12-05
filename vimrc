@@ -39,6 +39,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
+Plug 'airblade/vim-rooter'
 
 Plug 'MunifTanjim/nui.nvim'
 
@@ -219,7 +220,7 @@ au BufRead,BufNewFile */ansible/*.yaml set filetype=yaml.ansible softtabstop=2 t
 " Key Bindings
 "=============================================================================
 "
-let mapleader=';' " Easy access to leader key
+let mapleader=' ' " Easy access to leader key
 
 " Buffer management
 nnoremap <silent> [b  :bprevious<CR>
@@ -237,12 +238,12 @@ nnoremap <silent> T]  :tablast<CR>
 " Easy Motion
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
-nmap <SPACE> <Plug>(easymotion-s)
+nmap <leader>a <Plug>(easymotion-lineanywhere)
+nmap <leader>f <Plug>(easymotion-s)
 nmap <leader>j <Plug>(easymotion-bd-jk)
 nmap <leader>k <Plug>(easymotion-bd-jk)
 nmap <leader>w <Plug>(easymotion-bd-w)
-nmap <leader><leader>j <Plug>(easymotion-overwin-line)
-nmap <leader><leader>k <Plug>(easymotion-overwin-line)
+nmap <leader>w <Plug>(easymotion-bd-w)
 
 map <Leader>n :NeoTreeShowToggle<CR>
 map <Leader>m :NeoTreeFocus<CR>
@@ -251,7 +252,6 @@ map <Leader>s :write<CR>
 map <Leader>q :wq<CR>
 map <Leader>! :qall<CR>
 map <Leader>b :TagbarToggle<CR>
-map <Leader>a :Ag!<CR>
 map <leader>h :noh<CR>
 
  " ViMux
@@ -264,8 +264,6 @@ map <Leader>vz :call VimuxZoomRunner()<CR>
 
 " Fugitive
 map <Leader>gw :Gwrite<CR>
-
-map <Leader>f :Black<CR>
 
 " vim-test
 map <Leader>tn :TestNearest<CR>
@@ -285,6 +283,8 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>gd <cmd>GoDoc<cr>
+nnoremap <leader>gb <cmd>GoDocBrowser<cr>
 
 
 "=============================================================================
@@ -305,6 +305,9 @@ set background=light
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
+
+" vim-startify
+" let g:startify_change_to_dir = 0
 
 " Syntastic
 let g:syntastic_python_checkers = ['pylint']
