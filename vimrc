@@ -1,4 +1,3 @@
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " https://github.com/chriskempson/base16-vim/issues/69
 call plug#begin() " Evaluating `nvim` so share plugins with VIM
 
 " Adapted from https://github.com/hrsh7th/nvim-cmp
@@ -21,7 +20,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+" Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
 " Misc
 Plug 'psf/black'
@@ -47,6 +46,7 @@ Plug 'nvim-neo-tree/neo-tree.nvim'
 Plug 'Raimondi/delimitMate'
 Plug 'benmills/vimux'
 Plug 'janko/vim-test'                                                       " Execute tests from vim
+Plug 'nvim-treesitter/nvim-treesitter'
 
 Plug 'ellisonleao/gruvbox.nvim'
 
@@ -59,11 +59,10 @@ Plug 'tpope/vim-commentary'                                                 " Vi
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end() " vim-plug
 
-set completeopt=menu,menuone,noselect
-
-set background=light" or light if you want light mode
+set background=light " or light if you want light mode
 colorscheme gruvbox
 
+set completeopt=menu,menuone,noselect
 
 lua <<EOF
   require('lualine').setup()
@@ -91,7 +90,7 @@ lua <<EOF
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       ["<Tab>"] = cmp.mapping(
          function(fallback)
            cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
@@ -150,6 +149,16 @@ lua <<EOF
     capabilities = capabilities
   }
 
+  require('neo-tree').setup {
+    filesystem = {
+      filtered_items = {
+        visible = true,
+        hide_dotfiles = false,
+        hide_gitignored = true,
+      },
+    }
+  }
+
   require("mason").setup()
   require("mason-lspconfig").setup()
   require("mason-lspconfig").setup_handlers {
@@ -165,6 +174,7 @@ lua <<EOF
           require("rust-tools").setup {}
       end
   }
+
 EOF
 
 " Turn on filetype plugin and indent loading so that loading the
@@ -301,7 +311,6 @@ let $PATH.= ':/home/pmyjavec/.pyenv/versions/neovim3/bin/'
 
 " base16 themes
 set termguicolors
-set background=light
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
