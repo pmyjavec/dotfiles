@@ -20,7 +20,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
 " Misc
 Plug 'psf/black'
@@ -39,6 +39,7 @@ Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
 Plug 'airblade/vim-rooter'
+Plug 'jvirtanen/vim-hcl'
 
 Plug 'MunifTanjim/nui.nvim'
 
@@ -59,10 +60,13 @@ Plug 'tpope/vim-commentary'                                                 " Vi
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end() " vim-plug
 
-set background=light " or light if you want light mode
+" set background=light " or light if you want light mode
 colorscheme gruvbox
 
 set completeopt=menu,menuone,noselect
+
+" Bite the bullet.
+set spell spelllang=en_us
 
 lua <<EOF
   require('lualine').setup()
@@ -146,6 +150,10 @@ lua <<EOF
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
   require('lspconfig')['gopls'].setup {
+    capabilities = capabilities
+  }
+
+  require('lspconfig')['tailwindcss'].setup {
     capabilities = capabilities
   }
 

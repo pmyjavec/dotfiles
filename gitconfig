@@ -25,3 +25,11 @@
 
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[url "ssh://git@github.com/LF-Certification"]
+	insteadOf = https://github.com/LF-Certification
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
